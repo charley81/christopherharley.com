@@ -1,1 +1,18 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #0069a8;
+  --color-primary-light: #0084d1;
+  --color-dark: #00151f;
+  --color-light: #fafdff;
+  --color-dark-grey: #576166;
+  --color-light-grey: #99a7ad;
+  --border-radius: 6px;
+}
+
+body {
+  font-family: 'Quicksand Variable', sans-serif;
+  font-size: 1rem;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}

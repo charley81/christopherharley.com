@@ -1,17 +1,25 @@
 ---
-// styles
 import '../styles/global.css'
+// Supports weights 300-700
 
 // components
 import BaseHead from '../components/base-head.astro'
+import Navbar from '../components/navbar.astro'
 
-const { title } = Astro.props
+// types
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
-  <BaseHead title={title} />
-  <body>
+  <BaseHead title={title} description={description} />
+  <body class="mx-auto max-w-400 p-4 tracking-wide md:p-8 xl:p-16">
+    <Navbar />
     <slot />
   </body>
 </html>
