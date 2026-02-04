@@ -1,41 +1,15 @@
 ---
-import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
+import ProjectCard from './project-card.astro'
 const projects = await getCollection('projects')
 ---
 
 <section class="mt-20">
   <h3 class="text-2xl font-bold">My Work</h3>
-  <div class="mt-4 grid gap-y-16">
+  <div class="mt-4 grid gap-y-16 lg:gap-y-32">
     {
-      projects.map((project) => {
-        const { image, title, description, tags, projectUrl } = project.data
-
-        return (
-          <div class="image-container grid gap-4 text-base md:text-2xl lg:flex lg:gap-4">
-            <Image
-              src={image}
-              alt={title}
-              class="block h-full w-full rounded-md border object-cover"
-            />
-            <div>
-              <p class="leading-relaxed text-dark-grey">{description}</p>
-              <ul class="flex gap-2 font-bold">
-                {tags.map((tag, index) => (
-                  <>
-                    <li>{tag}</li>
-                    {index < tags.length - 1 && <span>|</span>}
-                  </>
-                ))}
-              </ul>
-              <button class="flex font-bold">
-                <a href={projectUrl} class="text-primary underline">
-                  VIEW SITE →
-                </a>
-              </button>
-            </div>
-          </div>
-        )
+      projects.map((project, index) => {
+        return <ProjectCard project={project} index={index} />
       })
     }
   </div>
