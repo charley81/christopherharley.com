@@ -1,7 +1,99 @@
 ---
-import SectionTitle from '../section-title.astro'
 ---
-
-<section class="mt-40">
-  <SectionTitle text="about me" />
+<section id="about" class="py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+    <div class="flex justify-center mb-8">
+      <button id="short-btn" class="about-btn active-btn px-4 py-2">Short</button>
+      <button id="medium-btn" class="about-btn px-4 py-2 mx-4">Medium</button>
+      <button id="long-btn" class="about-btn px-4 py-2">Long</button>
+    </div>
+    <div id="about-content" class="max-w-3xl mx-auto">
+      <p>I'm an Army veteran and UX Engineer who specializes in designing clean, minimalist interfaces in Figma and implementing them with modern tools like Astro, Next.js, and headless CMSs. My dual background allows me to guide projects from concept to completion, ensuring every detail is considered. I'm seeking a role at an innovative agency where I can apply these end-to-end skills. Outside of work, I'm dedicated to family and friends, and you can also find me playing drums, producing, or DJing underground electronic music.</p>
+    </div>
+  </div>
 </section>
+
+<style>
+  .about-btn {
+    border: none;
+    background-color: transparent;
+    font-size: 1.125rem;
+    cursor: pointer;
+    position: relative;
+    color: #333;
+  }
+
+  .active-btn {
+    font-weight: bold;
+  }
+
+  .active-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #3b82f6; /* blue-500 */
+  }
+
+  #about-content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    text-align: justify;
+  }
+</style>
+
+<script>
+  const paragraphs = [
+    `I'm an Army veteran and UX Engineer who specializes in designing clean, minimalist interfaces in Figma and implementing them with modern tools like Astro, Next.js, and headless CMSs. My dual background allows me to guide projects from concept to completion, ensuring every detail is considered. I'm seeking a role at an innovative agency where I can apply these end-to-end skills. Outside of work, I'm dedicated to family and friends, and you can also find me playing drums, producing, or DJing underground electronic music.`,
+    `I'm an Army veteran and UX Engineer who specializes in designing clean, minimalist interfaces in Figma and implementing them with modern tools like Astro, Next.js, and headless CMSs. My dual background allows me to guide projects from concept to completion, ensuring every detail is considered. I'm seeking a role at an innovative agency where I can apply these end-to-end skills. Outside of work, I'm dedicated to family and friends, and you can also find me playing drums, producing, or DJing underground electronic music.`,
+    `I'm an Army veteran and UX Engineer who specializes in designing clean, minimalist interfaces in Figma and implementing them with modern tools like Astro, Next.js, and headless CMSs. My dual background allows me to guide projects from concept to completion, ensuring every detail is considered. I'm seeking a role at an innovative agency where I can apply these end-to-end skills. Outside of work, I'm dedicated to family and friends, and you can also find me playing drums, producing, or DJing underground electronic music.`
+  ];
+
+  const aboutContent = document.getElementById('about-content');
+  const shortBtn = document.getElementById('short-btn');
+  const mediumBtn = document.getElementById('medium-btn');
+  const longBtn = document.getElementById('long-btn');
+  const buttons = [shortBtn, mediumBtn, longBtn];
+
+  function updateContent(numParagraphs) {
+    aboutContent.innerHTML = paragraphs.slice(0, numParagraphs).map(p => `<p>${p}</p>`).join('');
+  }
+
+  function setActiveButton(activeBtn) {
+    buttons.forEach(btn => {
+      btn.classList.remove('active-btn');
+    });
+    activeBtn.classList.add('active-btn');
+  }
+
+  shortBtn.addEventListener('click', () => {
+    updateContent(1);
+    setActiveButton(shortBtn);
+  });
+
+  mediumBtn.addEventListener('click', () => {
+    updateContent(2);
+    setActiveButton(mediumBtn);
+  });
+
+  longBtn.addEventListener('click', () => {
+    updateContent(3);
+    setActiveButton(longBtn);
+  });
+
+  // Set initial state to "Long" as per the image
+  updateContent(3);
+  setActiveButton(longBtn);
+
+  // Correction: The image shows "Long" as the active button initially.
+  // The code above sets the "Long" button as active on load.
+  // Let's adjust the initial state to show one paragraph and have "Short" as active.
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateContent(1);
+    setActiveButton(shortBtn);
+  });
+</script>
