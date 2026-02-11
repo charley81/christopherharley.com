@@ -1,0 +1,96 @@
+<div class="mt-8">
+  <button id="short-btn">
+    <span>Short</span>
+    <span></span>
+  </button>
+  <button id="medium-btn">
+    <span>Medium</span>
+    <span></span>
+  </button>
+  <button id="long-btn">
+    <span>Long</span>
+    <span></span>
+  </button>
+</div>
+
+<div id="about-content" class="mt-8">
+  <p>
+    I'm an Army veteran and UX Engineer who specializes in designing clean,
+    minimalist interfaces in Figma and implementing them with modern tools like
+    Astro, Next.js, and headless CMSs. My dual background allows me to guide
+    projects from concept to completion, ensuring every detail is considered.
+    I'm seeking a role at an innovative agency where I can apply these
+    end-to-end skills. Outside of work, I'm dedicated to family and friends, and
+    you can also find me playing drums, producing, or DJing underground
+    electronic music.
+  </p>
+</div>
+
+<script>
+  const paragraphs: string[] = [
+    `I'm an Army veteran and UX Engineer who specializes in designing clean, minimalist interfaces in Figma and implementing them with modern tools like Astro, Next.js, and headless CMSs. My dual background allows me to guide projects from concept to completion, ensuring every detail is considered. I'm seeking a role at an innovative agency where I can apply these end-to-end skills. Outside of work, I'm dedicated to family and friends, and you can also find me playing drums, producing, or DJing underground electronic music.`,
+    `I'm an Army veteran and UX Engineer who specializes in designing clean, minimalist interfaces in Figma and implementing them with modern tools like Astro, Next.js, and headless CMSs. My dual background allows me to guide projects from concept to completion, ensuring every detail is considered. I'm seeking a role at an innovative agency where I can apply these end-to-end skills. Outside of work, I'm dedicated to family and friends, and you can also find me playing drums, producing, or DJing underground electronic music.`,
+    `I'm an Army veteran and UX Engineer who specializes in designing clean, minimalist interfaces in Figma and implementing them with modern tools like Astro, Next.js, and headless CMSs. My dual background allows me to guide projects from concept to completion, ensuring every detail is considered. I'm seeking a role at an innovative agency where I can apply these end-to-end skills. Outside of work, I'm dedicated to family and friends, and you can also find me playing drums, producing, or DJing underground electronic music.`,
+  ]
+
+  const aboutContent = document.getElementById('about-content')
+
+  const buttons: { id: string; paragraphs: number }[] = [
+    { id: 'short-btn', paragraphs: 1 },
+    { id: 'medium-btn', paragraphs: 2 },
+    { id: 'long-btn', paragraphs: 3 },
+  ]
+
+  const buttonElements = buttons
+    .map(({ id }) => document.getElementById(id) as HTMLButtonElement | null)
+    .filter((btn): btn is HTMLButtonElement => btn !== null)
+
+  const updateContent = (numOfParagraphs: number) => {
+    if (aboutContent) {
+      aboutContent.innerHTML = paragraphs
+        .slice(0, numOfParagraphs)
+        .map((p) => `<p class='mb-4 leading-relaxed text-justify'>${p}</p>`)
+        .join('')
+    }
+  }
+
+  const setActiveButton = (activeButton: HTMLButtonElement) => {
+    buttonElements.forEach((button) => {
+      const textSpan = button.querySelector('.text-span')
+      const underlineSpan = button.querySelector('.underline-span')
+
+      if (textSpan && underlineSpan) {
+        if (button === activeButton) {
+          textSpan.classList.add('font-bold')
+          underlineSpan.classList.remove('hidden')
+        } else {
+          textSpan.classList.remove('font-bold')
+          underlineSpan.classList.add('hidden')
+        }
+      }
+    })
+  }
+
+  buttonElements.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      const { paragraphs } = buttons[index]
+      updateContent(paragraphs)
+      setActiveButton(button)
+    })
+  })
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (aboutContent) {
+      // Temporarily set content to max to calculate height
+      updateContent(3)
+      const maxHeight = aboutContent.offsetHeight
+      ;(aboutContent as HTMLElement).style.minHeight = `${maxHeight}px`
+    }
+
+    const initialButton = buttonElements[0]
+    if (initialButton) {
+      updateContent(1)
+      setActiveButton(initialButton)
+    }
+  })
+</script>
