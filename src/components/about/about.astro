@@ -6,12 +6,14 @@ import SectionTitle from '../section-title.astro'
 import AboutInfo from './about-info.astro'
 ---
 
-<Section>
+<Section class="lg:flex lg:gap-4">
   <Image
     src={aboutImage}
     alt="Christopher Harley and his wife and daughter"
     class="mb-16 rounded-md"
   />
-  <SectionTitle text="about me" />
-  <AboutInfo />
+  <div>
+    <SectionTitle text="about me" />
+    <AboutInfo />
+  </div>
 </Section>
