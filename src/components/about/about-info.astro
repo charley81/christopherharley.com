@@ -80,14 +80,8 @@
   })
 
   document.addEventListener('DOMContentLoaded', () => {
-    if (aboutContent) {
-      // Temporarily set content to max to calculate height
-      updateContent(3)
-      const maxHeight = aboutContent.offsetHeight
-      ;(aboutContent as HTMLElement).style.minHeight = `${maxHeight}px`
-    }
-
     const initialButton = buttonElements[0]
+
     if (initialButton) {
       updateContent(1)
       setActiveButton(initialButton)
