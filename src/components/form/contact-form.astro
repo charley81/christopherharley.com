@@ -1,31 +1,39 @@
 ---
-import Input from '../../components/form/input.astro'
-import Textarea from '../../components/form/textarea.astro'
+import Input from './input.astro'
+import Textarea from './textarea.astro'
 import SectionTitle from '../section-title.astro'
 import Section from '../section.astro'
 ---
 
 <Section>
   <SectionTitle text="Contact Me" />
-  <Input
-    label="Name"
-    name="name"
-    type="text"
-    placeholder="Your name"
-    required
-  />
-  <Input
-    label="Email"
-    name="email"
-    type="email"
-    placeholder="your.email@example.com"
-    required
-  />
-  <Textarea
-    label="Your message"
-    name="message"
-    placeholder="Type your message here"
-    required
-    rows={5}
-  />
+  <form class="mx-auto mt-10 max-w-2xl">
+    <Input
+      label="Name"
+      name="name"
+      type="text"
+      placeholder="Your name"
+      required
+    />
+    <Input
+      label="Email"
+      name="email"
+      type="email"
+      placeholder="your.email@example.com"
+      required
+    />
+    <Textarea
+      label="Your message"
+      name="message"
+      placeholder="Type your message here"
+      required
+      rows={5}
+    />
+    <button
+      type="submit"
+      class="mt-4 w-full rounded-(--border-radius) bg-dark px-6 py-3 font-bold text-light hover:bg-dark/80 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none"
+    >
+      Send message
+    </button>
+  </form>
 </Section>
