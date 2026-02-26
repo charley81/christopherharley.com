@@ -1,31 +1,99 @@
 ---
-import Input from '../../components/form/input.astro'
-import Textarea from '../../components/form/textarea.astro'
+import Input from './input.astro'
+import Textarea from './textarea.astro'
 import SectionTitle from '../section-title.astro'
 import Section from '../section.astro'
 ---
 
-<Section>
+<Section class="max-w-4xl">
   <SectionTitle text="Contact Me" />
-  <Input
-    label="Name"
-    name="name"
-    type="text"
-    placeholder="Your name"
-    required
-  />
-  <Input
-    label="Email"
-    name="email"
-    type="email"
-    placeholder="your.email@example.com"
-    required
-  />
-  <Textarea
-    label="Your message"
-    name="message"
-    placeholder="Type your message here"
-    required
-    rows={5}
-  />
+  <div id="form-status" class="mt-2 h-8 font-medium"></div>
+  <form
+    data-netlify="true"
+    id="contact-form"
+    class="mx-auto mt-10"
+    novalidate
+    name="contact"
+  >
+    <Input
+      label="Name"
+      name="name"
+      type="text"
+      placeholder="Your name"
+      required
+    />
+    <Input
+      label="Email"
+      name="email"
+      type="email"
+      placeholder="your.email@example.com"
+      required
+    />
+    <Textarea
+      label="Your message"
+      name="message"
+      placeholder="Type your message here"
+      required
+      rows={5}
+    />
+    <button
+      type="submit"
+      id="submit-button"
+      class="mt-4 w-full rounded-(--border-radius) bg-dark px-6 py-3 font-bold text-light hover:bg-dark/80 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-500"
+    >
+      Send message
+    </button>
+  </form>
 </Section>
+
+<script>
+  import { actions, isInputError } from 'astro:actions'
+
+  function renderStatus(message: string, type: string) {
+    const colorClasses =
+      type === 'success'
+        ? 'bg-green-50 text-green-600 border-green-200'
+        : 'bg-red-50 text-red-600 border-red-200'
+
+    return `
+          <div class="p-4 rounded-md border ${colorClasses}" role="alert">
+            <p class="text-sm font-medium">${message}</p>  
+          </div>
+        `
+  }
+
+  const form = document.querySelector('#contact-form') as HTMLFormElement
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    const submitButton = document.querySelector(
+      '#submit-button',
+    ) as HTMLButtonElement
+
+    const statusBox = document.querySelector('#form-status') as HTMLElement
+
+    submitButton.disabled = true
+    submitButton!.textContent = 'submitting'
+
+    const formData = new FormData(form)
+
+    const { data, error } = await actions.sendContactEmail(formData)
+
+    if (error) {
+      statusBox!.innerHTML = renderStatus('something went wrong', 'error')
+    } else {
+      statusBox!.innerHTML = renderStatus('Success! Talk soon.', 'success')
+      form.reset()
+    }
+
+    submitButton.disabled = false
+    submitButton!.textContent = 'Send Message'
+
+    setTimeout(() => {
+      if (statusBox) {
+        statusBox.innerHTML = ''
+      }
+    }, 5000)
+  })
+</script>

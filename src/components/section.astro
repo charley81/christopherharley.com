@@ -2,6 +2,11 @@
 const { class: className = '' } = Astro.props
 ---
 
-<section class:list={['my-80', className]}>
+<section
+  class:list={[
+    'mx-auto my-80 max-w-(--max-width) p-(--padding-sm) md:p-(--padding-md)',
+    className,
+  ]}
+>
   <slot />
 </section>

@@ -8,6 +8,9 @@
   --color-dark-grey: #576166;
   --color-light-grey: #99a7ad;
   --border-radius: 6px;
+  --padding-sm: 16px;
+  --padding-md: 32px;
+  --max-width: 1600px;
 }
 
 body {

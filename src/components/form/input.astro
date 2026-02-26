@@ -11,14 +11,19 @@ const { label, name, type, placeholder, required = true } = Astro.props
 ---
 
 <div class="mb-4">
-  <label for="name" class="block text-sm font-medium">
-    {required && <span class="text-red-500">*</span>}
+  <label for={name} class="block text-sm font-medium text-dark">
+    {label}
   </label>
   <input
     type={type}
     id={name}
+    name={name}
     placeholder={placeholder}
     required={required}
-    class="focu:boder-blue-500 mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:ring-blue-500 focus:outline-none sm:text-sm"
+    class="mt-1 block w-full rounded-(--border-radius) border border-light-grey px-3 py-2 placeholder-dark-grey shadow-sm focus:border-primary focus:ring-primary focus:outline-none sm:text-sm"
   />
+  <span
+    id={`${name}-error`}
+    class="mt-1 hidden text-xs text-red-600"
+    aria-live="polite"></span>
 </div>
