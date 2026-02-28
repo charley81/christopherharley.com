@@ -104,10 +104,8 @@ import Section from '../section.astro'
     submitButton!.textContent = 'submitting'
 
     try {
-      formData.append('form-name', 'contact')
-
       const response = await fetch('/', {
-        method: 'POSTS',
+        method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData as any).toString(),
       })
