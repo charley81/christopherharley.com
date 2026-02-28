@@ -1,0 +1,17 @@
+---
+interface Props {
+  label: string
+  name: string
+}
+
+const { label, name } = Astro.props
+---
+
+<div class="mb-4">
+  <label for={name} class="block text-sm font-medium text-dark">{label}</label>
+  <slot />
+  <span
+    id={`${name}-error`}
+    class="invisible mt-1 block min-h-4 text-xs text-red-600"
+    aria-live="polite"></span>
+</div>
