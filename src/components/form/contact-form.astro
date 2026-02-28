@@ -76,7 +76,7 @@ import Section from '../section.astro'
 
     document.querySelectorAll('[id$="-error"]').forEach((el) => {
       el.textContent = ''
-      el.classList.add('hidden')
+      el.classList.add('invisible')
     })
 
     if (!result.success) {
@@ -87,7 +87,7 @@ import Section from '../section.astro'
 
         if (errorSpan) {
           errorSpan.textContent = issue.message
-          errorSpan.classList.remove('hidden')
+          errorSpan.classList.remove('invisible')
         }
       })
 
