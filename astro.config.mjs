@@ -3,9 +3,10 @@ import { defineConfig, fontProviders } from 'astro/config'
 
 import tailwindcss from '@tailwindcss/vite'
 
-import netlify from '@astrojs/netlify';
+import netlify from '@astrojs/netlify'
 
 export default defineConfig({
+  site: 'https://christopherharley.com',
   output: 'static',
 
   experimental: {
