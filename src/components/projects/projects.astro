@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content'
 import ProjectCard from './project-card.astro'
-import SectionTitle from '../section-title.astro'
+import SectionTitle from '../ui/section-title.astro'
 const projects = await getCollection('projects')
-import Section from '../section.astro'
+import Section from '../ui/section.astro'
 ---
 
 <Section>
