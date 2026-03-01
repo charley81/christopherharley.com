@@ -7,11 +7,10 @@ import Section from '../ui/section.astro'
 
 <Section class="max-w-4xl">
   <SectionTitle text="Contact Me" />
-  <div id="form-status" class="mt-2 h-4 font-medium"></div>
   <form
     data-netlify="true"
     id="contact-form"
-    class="mx-auto mt-10"
+    class="mx-auto mt-4"
     novalidate
     name="contact"
     autocomplete="off"
@@ -41,10 +40,11 @@ import Section from '../ui/section.astro'
     <button
       type="submit"
       id="submit-button"
-      class="mt-4 w-full rounded-(--border-radius) bg-dark px-6 py-3 font-bold text-light hover:bg-dark/80 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-500"
+      class="mt-4 w-full rounded-(--border-radius) bg-dark px-6 py-3 font-bold text-light hover:cursor-pointer hover:bg-dark/80 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-500"
     >
       Send message
     </button>
+    <div id="form-status" class="mt-4 min-h-15 font-medium"></div>
   </form>
 </Section>
 
