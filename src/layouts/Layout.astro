@@ -17,9 +17,9 @@ const { title, description } = Astro.props
 <!doctype html>
 <html lang="en">
   <BaseHead title={title} description={description} />
-  <body class="mx-auto tracking-wide">
+  <body class="mx-auto flex min-h-screen flex-col tracking-wide">
     <Navbar />
-    <main>
+    <main class="grow">
       <slot />
     </main>
     <Footer />
