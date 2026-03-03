@@ -5,22 +5,22 @@
     "image": "../assets/walnut.png",
     "description": "A performance-focused marketing website designed to help a lawn  care startup attract customers. The Astro-based site delivers instant  loading and integrates a CMS, allowing the owner to manage services,  showcase work, and capture free estimate requests independently.",
     "tags": ["Astro", "Keystatic CMS", "Typescript", "Zod"],
-    "projectUrl": "https://google.com"
+    "projectUrl": "https://walnutlawn.netlify.app/"
   },
   {
     "id": 2,
-    "title": "walnut lawn",
+    "title": "UX Design Portfolio",
     "image": "../assets/ux.png",
     "description": "A performance-focused marketing website designed to help a lawn  care startup attract customers. The Astro-based site delivers instant  loading and integrates a CMS, allowing the owner to manage services,  showcase work, and capture free estimate requests independently.",
     "tags": ["HTML", "CSS", "Javascript"],
-    "projectUrl": "https://google.com"
+    "projectUrl": "https://portfolio-vs-3.netlify.app/"
   },
   {
     "id": 3,
-    "title": "walnut lawn",
+    "title": "Lucky Guy Brewing",
     "image": "../assets/lucky.png",
     "description": "A performance-focused marketing website designed to help a lawn  care startup attract customers. The Astro-based site delivers instant  loading and integrates a CMS, allowing the owner to manage services,  showcase work, and capture free estimate requests independently.",
     "tags": ["HTML", "CSS", "Javascript"],
-    "projectUrl": "https://google.com"
+    "projectUrl": "https://luckyguybrewing.netlify.app/"
   }
 ]
