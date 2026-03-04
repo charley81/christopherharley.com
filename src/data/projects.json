@@ -3,7 +3,7 @@
     "id": 1,
     "title": "walnut lawn",
     "image": "../assets/walnut.png",
-    "description": "A performance-focused marketing website designed to help a lawn  care startup attract customers. The Astro-based site delivers instant  loading and integrates a CMS, allowing the owner to manage services,  showcase work, and capture free estimate requests independently.",
+    "description": "Designed and built a custom lawn care website in three weeks using Astro and Keystatic CMS. I led the full process—from user discovery and wireframes to high‑fidelity design in Figma and final development. The site helps the client generate leads, showcase their work, and manage content independently through a headless CMS.",
     "tags": ["Astro", "Keystatic CMS", "Typescript", "Zod"],
     "projectUrl": "https://walnutlawn.netlify.app/"
   },
@@ -11,16 +11,16 @@
     "id": 2,
     "title": "UX Design Portfolio",
     "image": "../assets/ux.png",
-    "description": "A performance-focused marketing website designed to help a lawn  care startup attract customers. The Astro-based site delivers instant  loading and integrates a CMS, allowing the owner to manage services,  showcase work, and capture free estimate requests independently.",
-    "tags": ["HTML", "CSS", "Javascript"],
+    "description": "A personal portfolio built in two weeks to showcase my UX/UI design skills. I led the full double‑diamond cycle—defining user (employer) needs, iterating on wireframes, designing in Figma, and developing with Astro and Shadcn. The site landed me a customer interface specialist role, demonstrating my front end and content management skills",
+    "tags": ["Astro", "Shadcn"],
     "projectUrl": "https://portfolio-vs-3.netlify.app/"
   },
   {
     "id": 3,
     "title": "Lucky Guy Brewing",
     "image": "../assets/lucky.png",
-    "description": "A performance-focused marketing website designed to help a lawn  care startup attract customers. The Astro-based site delivers instant  loading and integrates a CMS, allowing the owner to manage services,  showcase work, and capture free estimate requests independently.",
-    "tags": ["HTML", "CSS", "Javascript"],
+    "description": "A custom e‑commerce website for a craft brewery, designed and developed in two weeks. As a customer interface specialist, I handled the entire process—from understanding the need to advertise and sell beer online, to creating high‑fidelity designs in Figma, and building the site with Gatsby, Contentful CMS, and Snipcart. The result is a fast, content‑managed site that lets the brewery showcase their beers and handle sales seamlessly.",
+    "tags": ["Gatsby", "Contentful", "Snipcart", "Formspree"],
     "projectUrl": "https://luckyguybrewing.netlify.app/"
   }
 ]
