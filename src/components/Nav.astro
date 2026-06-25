@@ -1,0 +1,41 @@
+---
+export interface Props {
+  /** 'default' uses bg-background, 'case-study' uses bg-background/80 with backdrop-blur */
+  variant?: 'default' | 'case-study'
+}
+
+const { variant = 'default' } = Astro.props
+const navClass =
+  variant === 'case-study'
+    ? 'fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border-muted'
+    : 'fixed top-0 w-full z-50 bg-background border-b border-border-muted'
+const containerClass =
+  variant === 'case-study'
+    ? 'max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between'
+    : 'flex justify-between items-center h-20 px-edge-padding max-w-max-width mx-auto'
+---
+
+<nav class={navClass}>
+  <div class={containerClass}>
+    <a
+      href="/"
+      class="font-headline-lg text-[20px] tracking-tight text-text-primary"
+    >
+      Christopher Harley
+    </a>
+    <div class="flex items-center gap-8">
+      <a
+        href="/about"
+        class="text-text-secondary hover:text-text-primary transition-colors text-[14px] font-medium uppercase tracking-wider"
+      >
+        About
+      </a>
+      <a
+        href="/contact"
+        class="text-text-secondary hover:text-text-primary transition-colors text-[14px] font-medium uppercase tracking-wider"
+      >
+        Contact
+      </a>
+    </div>
+  </div>
+</nav>

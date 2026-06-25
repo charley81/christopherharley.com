@@ -27,9 +27,15 @@ async function contactAction(
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(
-        formData as unknown as Record<string, string>,
-      ).toString(),
+      body: (() => {
+        const params = new URLSearchParams()
+        for (const [key, value] of formData.entries()) {
+          if (typeof value === 'string') {
+            params.append(key, value)
+          }
+        }
+        return params.toString()
+      })(),
       signal: controller.signal,
     })
 

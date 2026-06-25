@@ -10,24 +10,25 @@ import { ContactForm } from '../components/contact-form'
   description="Get in touch with Christopher Harley"
 >
   <section
-    class="max-w-[1120px] mx-auto px-[48px] py-[160px] flex flex-col items-center justify-center min-h-[512px]"
+    class="max-w-max-width mx-auto px-edge-padding py-section-v-space flex flex-col items-center justify-center min-h-[512px]"
   >
     <div class="w-full max-w-[600px]">
       <header class="text-center md:text-left mb-20">
-        <h1
-          class="font-[Hanken_Grotesk] text-[48px] leading-[56px] tracking-[-0.02em] font-bold text-text-primary mb-6"
-        >
+        <h1 class="font-headline-lg text-headline-lg text-text-primary mb-6">
           Get in touch
         </h1>
-        <p
-          class="font-body-lg text-[18px] leading-[1.7] tracking-[0.01em] text-text-secondary max-w-md"
-        >
+        <p class="font-body-lg text-body-lg text-text-secondary max-w-md">
           For website design/development inquiries, or just to say hi.
         </p>
       </header>
 
       <!-- Hidden form for Netlify form detection (required for JS-rendered forms) -->
-      <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <form
+        name="contact"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        hidden
+      >
         <input name="name" />
         <input name="email" />
         <input name="inquiry" />
@@ -38,7 +39,7 @@ import { ContactForm } from '../components/contact-form'
       <ContactForm client:load />
 
       <div
-        class="pt-8 border-t border-border-muted flex flex-col md:flex-row justify-between items-center gap-4 text-text-secondary font-label-mono text-[12px] mt-20"
+        class="pt-8 border-t border-border-muted flex flex-col md:flex-row justify-between items-center gap-4 text-text-secondary font-label-mono text-label-mono mt-20"
       >
         <a
           href="mailto:hello@christopherharley.com"
@@ -50,9 +51,8 @@ import { ContactForm } from '../components/contact-form'
           href="#"
           class="hover:text-text-primary transition-colors duration-200 flex items-center gap-1"
         >
-          GitHub <span class="material-symbols-outlined text-[14px]"
-            >call_made</span
-          >
+          GitHub
+          <span class="material-symbols-outlined text-[14px]">call_made</span>
         </a>
       </div>
     </div>

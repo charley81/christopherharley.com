@@ -9,7 +9,9 @@ export const contactSchema = z.object({
     .max(100, { message: 'Name is too long' }),
   email: z
     .string()
-    .refine((v) => emailRegex.test(v), { message: 'Please enter a valid email' }),
+    .refine((v) => emailRegex.test(v), {
+      message: 'Please enter a valid email',
+    }),
   inquiry: z.enum(['agency', 'freelance', 'hi'], {
     error: 'Please select a subject',
   }),
@@ -32,6 +34,15 @@ export const inquiryLabels: Record<string, string> = {
   agency: 'Agency Role',
   freelance: 'Freelance Project',
   hi: 'Just saying hi',
+}
+
+export function narrowInquiry(
+  value: string | undefined,
+): 'agency' | 'freelance' | 'hi' {
+  if (value === 'agency' || value === 'freelance' || value === 'hi') {
+    return value
+  }
+  return 'hi'
 }
 
 /**

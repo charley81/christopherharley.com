@@ -2,6 +2,8 @@
 export const prerender = true
 
 import '../styles/global.css'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
 import { CaseStudyCarousel } from '../components/case-study-carousel'
 ---
 
@@ -16,38 +18,12 @@ import { CaseStudyCarousel } from '../components/case-study-carousel'
       content="Building a unified digital presence for a rising underground dnb artist."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body
     class="bg-background text-on-surface antialiased min-h-screen flex flex-col"
     style="font-family: 'Inter', sans-serif;"
   >
-    <!-- TopNavBar -->
-    <nav
-      class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border-muted"
-    >
-      <div
-        class="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between"
-      >
-        <a
-          class="font-headline-lg text-[20px] tracking-tight text-text-primary"
-          href="/">Christopher Harley</a
-        >
-        <div class="flex items-center gap-8">
-          <a
-            href="/about"
-            class="text-text-secondary hover:text-text-primary transition-colors text-[14px] font-medium uppercase tracking-wider"
-            >About</a
-          >
-          <a
-            href="/contact"
-            class="text-text-secondary hover:text-text-primary transition-colors text-[14px] font-medium uppercase tracking-wider"
-            >Contact</a
-          >
-        </div>
-      </div>
-    </nav>
+    <Nav variant="case-study" />
 
     <main class="mt-24 flex-grow">
       <!-- Case Study Header -->
@@ -213,78 +189,52 @@ import { CaseStudyCarousel } from '../components/case-study-carousel'
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-y-12 gap-x-gutter">
-            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
-              <span class="font-label-mono text-label-mono text-surface-dim"
-                >01</span
-              >
-              <h3 class="font-body-md font-bold text-surface-bright">
-                Architecture Definition
-              </h3>
-              <p class="font-body-md text-body-md text-on-primary-container">
-                Mapping out the single-page structure and CMS requirements
-                before a single line of code is generated.
-              </p>
-            </div>
-            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
-              <span class="font-label-mono text-label-mono text-surface-dim"
-                >02</span
-              >
-              <h3 class="font-body-md font-bold text-surface-bright">
-                Precision Spec Writing
-              </h3>
-              <p class="font-body-md text-body-md text-on-primary-container">
-                Creating high-fidelity prompts and Markdown specs that describe
-                the UI and logic in exhaustive detail.
-              </p>
-            </div>
-            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
-              <span class="font-label-mono text-label-mono text-surface-dim"
-                >03</span
-              >
-              <h3 class="font-body-md font-bold text-surface-bright">
-                Agent Invocation
-              </h3>
-              <p class="font-body-md text-body-md text-on-primary-container">
-                Deploying LLM agents via CLI to execute specific tasks based on
-                the provided specs.
-              </p>
-            </div>
-            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
-              <span class="font-label-mono text-label-mono text-surface-dim"
-                >04</span
-              >
-              <h3 class="font-body-md font-bold text-surface-bright">
-                Human Review Loop
-              </h3>
-              <p class="font-body-md text-body-md text-on-primary-container">
-                Validating the agent output against the design system and
-                functional requirements.
-              </p>
-            </div>
-            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
-              <span class="font-label-mono text-label-mono text-surface-dim"
-                >05</span
-              >
-              <h3 class="font-body-md font-bold text-surface-bright">
-                Iterative Refinement
-              </h3>
-              <p class="font-body-md text-body-md text-on-primary-container">
-                Providing corrective feedback to agents for edge cases,
-                performance bugs, or styling tweaks.
-              </p>
-            </div>
-            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
-              <span class="font-label-mono text-label-mono text-surface-dim"
-                >06</span
-              >
-              <h3 class="font-body-md font-bold text-surface-bright">
-                Automated Deployment
-              </h3>
-              <p class="font-body-md text-body-md text-on-primary-container">
-                Merging verified code into the main branch and triggering CI/CD
-                pipelines to the edge.
-              </p>
-            </div>
+            {
+              [
+                {
+                  num: '01',
+                  title: 'Architecture Definition',
+                  desc: 'Mapping out the single-page structure and CMS requirements before a single line of code is generated.',
+                },
+                {
+                  num: '02',
+                  title: 'Precision Spec Writing',
+                  desc: 'Creating high-fidelity prompts and Markdown specs that describe the UI and logic in exhaustive detail.',
+                },
+                {
+                  num: '03',
+                  title: 'Agent Invocation',
+                  desc: 'Deploying LLM agents via CLI to execute specific tasks based on the provided specs.',
+                },
+                {
+                  num: '04',
+                  title: 'Human Review Loop',
+                  desc: 'Validating the agent output against the design system and functional requirements.',
+                },
+                {
+                  num: '05',
+                  title: 'Iterative Refinement',
+                  desc: 'Providing corrective feedback to agents for edge cases, performance bugs, or styling tweaks.',
+                },
+                {
+                  num: '06',
+                  title: 'Automated Deployment',
+                  desc: 'Merging verified code into the main branch and triggering CI/CD pipelines to the edge.',
+                },
+              ].map((step) => (
+                <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
+                  <span class="font-label-mono text-label-mono text-surface-dim">
+                    {step.num}
+                  </span>
+                  <h3 class="font-body-md font-bold text-surface-bright">
+                    {step.title}
+                  </h3>
+                  <p class="font-body-md text-body-md text-on-primary-container">
+                    {step.desc}
+                  </p>
+                </div>
+              ))
+            }
           </div>
           <div
             class="mt-20 border border-[#e8e1dc]/10 flex items-center justify-center"
@@ -308,39 +258,31 @@ import { CaseStudyCarousel } from '../components/case-study-carousel'
               SoundCloud, Crashes, and Invisible Errors
             </h2>
             <div class="flex flex-col gap-12">
-              <div class="flex flex-col gap-2">
-                <h4
-                  class="font-body-md font-bold text-text-primary uppercase tracking-tight"
-                >
-                  SoundCloud URN Bug
-                </h4>
-                <p class="font-body-md text-body-md text-text-secondary">
-                  Resolving API discrepancies where specific track identifiers
-                  failed to hydrate the custom audio player correctly.
-                </p>
-              </div>
-              <div class="flex flex-col gap-2">
-                <h4
-                  class="font-body-md font-bold text-text-primary uppercase tracking-tight"
-                >
-                  Contact Form "Something Went Wrong"
-                </h4>
-                <p class="font-body-md text-body-md text-text-secondary">
-                  Debugging a silent failure in the edge function resulting from
-                  a missing environment variable in the agent's context.
-                </p>
-              </div>
-              <div class="flex flex-col gap-2">
-                <h4
-                  class="font-body-md font-bold text-text-primary uppercase tracking-tight"
-                >
-                  Production Crash After Adding One Field
-                </h4>
-                <p class="font-body-md text-body-md text-text-secondary">
-                  A schema mismatch in the CMS caused a total hydration failure.
-                  Fixed via agent-led rollback and schema alignment.
-                </p>
-              </div>
+              {
+                [
+                  {
+                    title: 'SoundCloud URN Bug',
+                    desc: 'Resolving API discrepancies where specific track identifiers failed to hydrate the custom audio player correctly.',
+                  },
+                  {
+                    title: 'Contact Form "Something Went Wrong"',
+                    desc: "Debugging a silent failure in the edge function resulting from a missing environment variable in the agent's context.",
+                  },
+                  {
+                    title: 'Production Crash After Adding One Field',
+                    desc: 'A schema mismatch in the CMS caused a total hydration failure. Fixed via agent-led rollback and schema alignment.',
+                  },
+                ].map((item) => (
+                  <div class="flex flex-col gap-2">
+                    <h4 class="font-body-md font-bold text-text-primary uppercase tracking-tight">
+                      {item.title}
+                    </h4>
+                    <p class="font-body-md text-body-md text-text-secondary">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))
+              }
             </div>
           </div>
           <div class="md:col-span-8">
@@ -383,59 +325,29 @@ import { CaseStudyCarousel } from '../components/case-study-carousel'
             </div>
             <div class="md:col-span-6 flex flex-col justify-center">
               <ul class="flex flex-col gap-4">
-                <li class="flex items-center gap-4">
-                  <span class="material-symbols-outlined text-secondary"
-                    >done</span
-                  >
-                  <span class="font-body-md text-body-md text-text-primary"
-                    >Hero &amp; Visual Identity</span
-                  >
-                </li>
-                <li class="flex items-center gap-4">
-                  <span class="material-symbols-outlined text-secondary"
-                    >done</span
-                  >
-                  <span class="font-body-md text-body-md text-text-primary"
-                    >Upcoming Shows (Live Sync)</span
-                  >
-                </li>
-                <li class="flex items-center gap-4">
-                  <span class="material-symbols-outlined text-secondary"
-                    >done</span
-                  >
-                  <span class="font-body-md text-body-md text-text-primary"
-                    >Latest Mixes (SoundCloud API)</span
-                  >
-                </li>
-                <li class="flex items-center gap-4">
-                  <span class="material-symbols-outlined text-secondary"
-                    >done</span
-                  >
-                  <span class="font-body-md text-body-md text-text-primary"
-                    >About &amp; Biography</span
-                  >
-                </li>
-                <li class="flex items-center gap-4">
-                  <span class="material-symbols-outlined text-secondary"
-                    >done</span
-                  >
-                  <span class="font-body-md text-body-md text-text-primary"
-                    >Connect &amp; Social Ecosystem</span
-                  >
-                </li>
-                <li class="flex items-center gap-4">
-                  <span class="material-symbols-outlined text-secondary"
-                    >done</span
-                  >
-                  <span class="font-body-md text-body-md text-text-primary"
-                    >Direct Booking Contact</span
-                  >
-                </li>
+                {
+                  [
+                    'Hero & Visual Identity',
+                    'Upcoming Shows (Live Sync)',
+                    'Latest Mixes (SoundCloud API)',
+                    'About & Biography',
+                    'Connect & Social Ecosystem',
+                    'Direct Booking Contact',
+                  ].map((item) => (
+                    <li class="flex items-center gap-4">
+                      <span class="material-symbols-outlined text-secondary">
+                        done
+                      </span>
+                      <span class="font-body-md text-body-md text-text-primary">
+                        {item}
+                      </span>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </div>
 
-          <!-- shadcn Carousel -->
           <div class="w-full mt-12">
             <CaseStudyCarousel client:load />
           </div>
@@ -474,29 +386,6 @@ import { CaseStudyCarousel } from '../components/case-study-carousel'
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer
-      class="bg-surface-container-low w-full py-unit border-t border-border-muted mt-auto"
-    >
-      <div
-        class="flex flex-col md:flex-row justify-between items-center px-edge-padding max-w-max-width mx-auto gap-4"
-      >
-        <span class="font-label-mono text-label-mono text-text-secondary"
-          >@2026 Christopher Harley</span
-        >
-        <div class="flex gap-4">
-          <a
-            href="/about"
-            class="font-body-md text-sm text-text-secondary hover:text-text-primary transition-colors"
-            >About</a
-          >
-          <a
-            href="/contact"
-            class="font-body-md text-sm text-text-secondary hover:text-text-primary transition-colors"
-            >Contact</a
-          >
-        </div>
-      </div>
-    </footer>
+    <Footer variant="case-study" />
   </body>
 </html>

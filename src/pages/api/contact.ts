@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro'
 import {
   contactSchema,
   inquiryLabels,
+  narrowInquiry,
   parseZodErrors,
   type ContactFormState,
 } from '../../lib/contact-schema'
@@ -19,36 +20,21 @@ export const POST: APIRoute = async ({ request }) => {
       message: (formData.get('message') as string) || '',
     }
 
-    const inquiry =
-      rawValues.inquiry === 'agency' ||
-      rawValues.inquiry === 'freelance' ||
-      rawValues.inquiry === 'hi'
-        ? rawValues.inquiry
-        : undefined
-
     const values = {
       name: rawValues.name,
       email: rawValues.email,
-      inquiry,
+      inquiry: narrowInquiry(rawValues.inquiry),
       message: rawValues.message,
     }
 
-    // Server-side validation
     const result = contactSchema.safeParse(values)
     if (!result.success) {
-      const safeInquiry: 'agency' | 'freelance' | 'hi' =
-        values.inquiry === 'agency'
-          ? 'agency'
-          : values.inquiry === 'freelance'
-            ? 'freelance'
-            : 'hi'
-
       return new Response(
         JSON.stringify({
           values: {
             name: values.name,
             email: values.email,
-            inquiry: safeInquiry,
+            inquiry: values.inquiry,
             message: values.message,
           },
           errors: parseZodErrors(result.error),
@@ -59,7 +45,6 @@ export const POST: APIRoute = async ({ request }) => {
       )
     }
 
-    // Process the submission
     console.log('Contact form submission:', {
       name: result.data.name,
       email: result.data.email,

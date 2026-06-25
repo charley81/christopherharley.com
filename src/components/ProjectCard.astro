@@ -1,0 +1,42 @@
+---
+import type { Project } from '../data/projects'
+export type { Project }
+export interface Props {
+  project: Project
+}
+
+const { project } = Astro.props
+---
+
+<article
+  class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted"
+>
+  <img
+    alt={project.imageAlt}
+    class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out"
+    src={project.imageUrl}
+  />
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-gutter"
+  >
+    <h3 class="font-headline-md text-headline-md text-white mb-2">
+      {project.title}
+    </h3>
+    <a
+      href={project.slug}
+      class="text-white font-label-mono text-label-mono mb-4 flex items-center gap-2 hover:underline"
+    >
+      Read Case Study
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+    </a>
+    <div class="flex gap-2">
+      {
+        project.tags.map((tag) => (
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</article>
