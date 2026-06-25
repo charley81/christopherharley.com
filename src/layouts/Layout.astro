@@ -1,12 +1,15 @@
 ---
-import "../styles/global.css";
+import '../styles/global.css'
 
 export interface Props {
-  title?: string;
-  description?: string;
+  title?: string
+  description?: string
 }
 
-const { title = "Christopher Harley - Design Engineer", description = "Portfolio of Christopher Harley, Design Engineer" } = Astro.props;
+const {
+  title = 'Christopher Harley - Design Engineer',
+  description = 'Portfolio of Christopher Harley, Design Engineer',
+} = Astro.props
 ---
 
 <!doctype html>
@@ -26,12 +29,28 @@ const { title = "Christopher Harley - Design Engineer", description = "Portfolio
   </head>
   <body>
     <!-- TopNavBar -->
-    <header class="fixed top-0 w-full z-50 bg-background border-b border-border-muted">
-      <div class="flex justify-between items-center h-20 px-[48px] max-w-[1120px] mx-auto">
-        <a href="/" class="font-headline-md text-[32px] font-semibold text-text-primary">Christopher Harley</a>
+    <header
+      class="fixed top-0 w-full z-50 bg-background border-b border-border-muted"
+    >
+      <div
+        class="flex justify-between items-center h-20 px-[48px] max-w-[1120px] mx-auto"
+      >
+        <a
+          href="/"
+          class="font-headline-md text-[32px] font-semibold text-text-primary"
+          >Christopher Harley</a
+        >
         <nav class="hidden md:flex gap-8">
-          <a href="/about" class="text-text-secondary font-label-mono text-[12px] hover:text-primary transition-colors duration-200 uppercase tracking-widest">About</a>
-          <a href="/contact" class="text-text-secondary font-label-mono text-[12px] hover:text-primary transition-colors duration-200 uppercase tracking-widest">Contact</a>
+          <a
+            href="/about"
+            class="text-text-secondary font-label-mono text-[12px] hover:text-primary transition-colors duration-200 uppercase tracking-widest"
+            >About</a
+          >
+          <a
+            href="/contact"
+            class="text-text-secondary font-label-mono text-[12px] hover:text-primary transition-colors duration-200 uppercase tracking-widest"
+            >Contact</a
+          >
         </nav>
         <button class="md:hidden text-text-primary" aria-label="Open menu">
           <span class="material-symbols-outlined">menu</span>
@@ -44,12 +63,26 @@ const { title = "Christopher Harley - Design Engineer", description = "Portfolio
     </main>
 
     <!-- Footer -->
-    <footer class="bg-background w-full py-unit border-t border-border-muted mt-auto">
-      <div class="flex flex-col md:flex-row justify-between items-center px-[48px] max-w-[1120px] mx-auto gap-4">
-        <span class="font-label-mono text-[12px] text-text-secondary">@2026 Christopher Harley</span>
+    <footer
+      class="bg-background w-full py-unit border-t border-border-muted mt-auto"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center px-[48px] max-w-[1120px] mx-auto gap-4"
+      >
+        <span class="font-label-mono text-[12px] text-text-secondary"
+          >@2026 Christopher Harley</span
+        >
         <div class="flex gap-8">
-          <a href="/about" class="font-caption text-[14px] text-text-secondary hover:text-text-primary transition-colors">About</a>
-          <a href="/contact" class="font-caption text-[14px] text-text-secondary hover:text-text-primary transition-colors">Contact</a>
+          <a
+            href="/about"
+            class="font-caption text-[14px] text-text-secondary hover:text-text-primary transition-colors"
+            >About</a
+          >
+          <a
+            href="/contact"
+            class="font-caption text-[14px] text-text-secondary hover:text-text-primary transition-colors"
+            >Contact</a
+          >
         </div>
       </div>
     </footer>

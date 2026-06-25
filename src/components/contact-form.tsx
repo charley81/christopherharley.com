@@ -1,67 +1,72 @@
-"use client";
+'use client'
 
-import { useActionState, useEffect, useRef } from "react";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { useActionState, useEffect, useRef } from 'react'
+import { ArrowRight, CheckCircle } from 'lucide-react'
 
-import { Button } from "./ui/button";
-import { Field, FieldGroup, FieldLabel, FieldError } from "./ui/field";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-import { type ContactFormState } from "../lib/contact-schema";
+import { Button } from './ui/button'
+import { Field, FieldGroup, FieldLabel, FieldError } from './ui/field'
+import { Input } from './ui/input'
+import { Textarea } from './ui/textarea'
+import { type ContactFormState } from '../lib/contact-schema'
 
 const initialState: ContactFormState = {
-  values: { name: "", email: "", inquiry: "freelance", message: "" },
+  values: { name: '', email: '', inquiry: 'freelance', message: '' },
   errors: null,
   success: false,
   serverError: null,
-};
+}
 
 async function contactAction(
   _prevState: ContactFormState,
-  formData: FormData
+  formData: FormData,
 ): Promise<ContactFormState> {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 15000);
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 15000)
 
   try {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(
+        formData as unknown as Record<string, string>,
+      ).toString(),
       signal: controller.signal,
-    });
+    })
 
-    return (await response.json()) as ContactFormState;
+    return (await response.json()) as ContactFormState
   } catch (error) {
-    if (error instanceof DOMException && error.name === "AbortError") {
+    if (error instanceof DOMException && error.name === 'AbortError') {
       return {
         ..._prevState,
         success: false,
-        serverError: "Request timed out. Please try again.",
-      };
+        serverError: 'Request timed out. Please try again.',
+      }
     }
     return {
       ..._prevState,
       success: false,
       serverError:
         error instanceof TypeError
-          ? "Unable to connect. Please check your internet connection."
-          : "Something went wrong. Please try again.",
-    };
+          ? 'Unable to connect. Please check your internet connection.'
+          : 'Something went wrong. Please try again.',
+    }
   } finally {
-    clearTimeout(timeoutId);
+    clearTimeout(timeoutId)
   }
 }
 
 export function ContactForm() {
-  const [state, formAction, pending] = useActionState(contactAction, initialState);
-  const formRef = useRef<HTMLFormElement>(null);
+  const [state, formAction, pending] = useActionState(
+    contactAction,
+    initialState,
+  )
+  const formRef = useRef<HTMLFormElement>(null)
 
   useEffect(() => {
     if (state.success) {
-      formRef.current?.reset();
+      formRef.current?.reset()
     }
-  }, [state.success]);
+  }, [state.success])
 
   if (state.success) {
     return (
@@ -75,11 +80,16 @@ export function ContactForm() {
         <p className="font-body-md text-body-md text-text-secondary max-w-sm">
           Thanks for reaching out. I'll get back to you within 48 hours.
         </p>
-        <Button variant="outline" onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth" })}>
+        <Button
+          variant="outline"
+          onClick={() =>
+            formRef.current?.scrollIntoView({ behavior: 'smooth' })
+          }
+        >
           Send another
         </Button>
       </div>
-    );
+    )
   }
 
   return (
@@ -131,12 +141,20 @@ export function ContactForm() {
               aria-invalid={!!state.errors?.inquiry?.length}
               className="w-full bg-transparent border-0 border-b border-border-muted focus:border-primary focus:ring-0 focus:outline-none px-0 py-3 font-body-md text-body-md text-text-primary transition-colors duration-300 appearance-none cursor-pointer rounded-none"
             >
-              <option className="bg-background" value="agency">Agency Role</option>
-              <option className="bg-background" value="freelance">Freelance Project</option>
-              <option className="bg-background" value="hi">Just saying hi</option>
+              <option className="bg-background" value="agency">
+                Agency Role
+              </option>
+              <option className="bg-background" value="freelance">
+                Freelance Project
+              </option>
+              <option className="bg-background" value="hi">
+                Just saying hi
+              </option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-text-secondary">
-              <span className="material-symbols-outlined text-[20px]">expand_more</span>
+              <span className="material-symbols-outlined text-[20px]">
+                expand_more
+              </span>
             </div>
           </div>
           {state.errors?.inquiry && (
@@ -162,15 +180,17 @@ export function ContactForm() {
       </FieldGroup>
 
       {state.serverError && (
-        <p className="text-[0.8rem] font-medium text-error">{state.serverError}</p>
+        <p className="text-[0.8rem] font-medium text-error">
+          {state.serverError}
+        </p>
       )}
 
       <div className="pt-8">
         <Button type="submit" disabled={pending} className="w-full group">
-          <span>{pending ? "Sending..." : "Send Message"}</span>
+          <span>{pending ? 'Sending...' : 'Send Message'}</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
         </Button>
       </div>
     </form>
-  );
+  )
 }

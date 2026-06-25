@@ -1,21 +1,25 @@
-import type { APIRoute } from "astro";
-import { contactSchema, inquiryLabels, type ContactFormState } from "../../lib/contact-schema";
+import type { APIRoute } from 'astro'
+import {
+  contactSchema,
+  inquiryLabels,
+  type ContactFormState,
+} from '../../lib/contact-schema'
 
-export const prerender = false;
+export const prerender = false
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const formData = await request.formData();
+    const formData = await request.formData()
 
     const values = {
-      name: (formData.get("name") as string) || "",
-      email: (formData.get("email") as string) || "",
-      inquiry: (formData.get("inquiry") as string) || "",
-      message: (formData.get("message") as string) || "",
-    };
+      name: (formData.get('name') as string) || '',
+      email: (formData.get('email') as string) || '',
+      inquiry: (formData.get('inquiry') as string) || '',
+      message: (formData.get('message') as string) || '',
+    }
 
     // Server-side validation
-    const result = contactSchema.safeParse(values);
+    const result = contactSchema.safeParse(values)
     if (!result.success) {
       return new Response(
         JSON.stringify({
@@ -24,17 +28,17 @@ export const POST: APIRoute = async ({ request }) => {
           success: false,
           serverError: null,
         } satisfies ContactFormState),
-        { status: 422, headers: { "Content-Type": "application/json" } }
-      );
+        { status: 422, headers: { 'Content-Type': 'application/json' } },
+      )
     }
 
     // Process the submission
-    console.log("Contact form submission:", {
+    console.log('Contact form submission:', {
       name: values.name,
       email: values.email,
       inquiry: inquiryLabels[values.inquiry] || values.inquiry,
       message: values.message,
-    });
+    })
 
     // TODO: Send email notification
     // Example with Resend:
@@ -49,23 +53,23 @@ export const POST: APIRoute = async ({ request }) => {
 
     return new Response(
       JSON.stringify({
-        values: { name: "", email: "", inquiry: "freelance", message: "" },
+        values: { name: '', email: '', inquiry: 'freelance', message: '' },
         errors: null,
         success: true,
         serverError: null,
       } satisfies ContactFormState),
-      { status: 200, headers: { "Content-Type": "application/json" } }
-    );
+      { status: 200, headers: { 'Content-Type': 'application/json' } },
+    )
   } catch (error) {
-    console.error("Contact form error:", error);
+    console.error('Contact form error:', error)
     return new Response(
       JSON.stringify({
-        values: { name: "", email: "", inquiry: "freelance", message: "" },
+        values: { name: '', email: '', inquiry: 'freelance', message: '' },
         errors: null,
         success: false,
-        serverError: "Something went wrong. Please try again.",
+        serverError: 'Something went wrong. Please try again.',
       } satisfies ContactFormState),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+      { status: 500, headers: { 'Content-Type': 'application/json' } },
+    )
   }
-};
+}
