@@ -1,23 +1,57 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "../styles/global.css";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Christopher Harley - Design Engineer", description = "Portfolio of Christopher Harley, Design Engineer" } = Astro.props;
+---
+
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+    </style>
+  </head>
+  <body>
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-background border-b border-border-muted">
+      <div class="flex justify-between items-center h-20 px-[48px] max-w-[1120px] mx-auto">
+        <a href="/" class="font-headline-md text-[32px] font-semibold text-text-primary">Christopher Harley</a>
+        <nav class="hidden md:flex gap-8">
+          <a href="/about" class="text-text-secondary font-label-mono text-[12px] hover:text-primary transition-colors duration-200 uppercase tracking-widest">About</a>
+          <a href="/contact" class="text-text-secondary font-label-mono text-[12px] hover:text-primary transition-colors duration-200 uppercase tracking-widest">Contact</a>
+        </nav>
+        <button class="md:hidden text-text-primary" aria-label="Open menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="flex-grow pt-[80px]">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-background w-full py-unit border-t border-border-muted mt-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center px-[48px] max-w-[1120px] mx-auto gap-4">
+        <span class="font-label-mono text-[12px] text-text-secondary">@2026 Christopher Harley</span>
+        <div class="flex gap-8">
+          <a href="/about" class="font-caption text-[14px] text-text-secondary hover:text-text-primary transition-colors">About</a>
+          <a href="/contact" class="font-caption text-[14px] text-text-secondary hover:text-text-primary transition-colors">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,11 +1,98 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+export const prerender = true;
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Christopher Harley - Design Engineer">
+  <!-- Hero Section -->
+  <section class="max-w-[1120px] mx-auto px-[48px] py-[160px] flex flex-col items-center justify-center text-center min-h-[512px]">
+    <h1 class="font-display-lg text-[72px] leading-[80px] tracking-[-0.02em] font-bold text-text-primary mb-[16px]">Design Engineer</h1>
+    <p class="font-body-lg text-[18px] leading-[1.7] tracking-[0.01em] text-text-secondary max-w-2xl">
+      Hi I'm Christopher, I build websites for agencies and small business's. Please reach out via the contact page to inquire about working together.
+    </p>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="max-w-[1120px] mx-auto px-[48px] pb-[160px] flex flex-col gap-[160px] mb-[160px]">
+    <!-- Project 1: Barbershop -->
+    <article class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted">
+      <img
+        alt="Barbershop Website Project"
+        class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQag4A1S5hxAnguBlYsHwZQjvT4strv1FTz-tmlQP_-z-K8eLA-pr-GO1_1qSd1QDDUb7lIZxqG1aTRqG7BWum8Yeap3rV-y51z_Q10oY1AzY1YE9Vl0IWLHdomE1RlnrEIIWMU0SOE95Rr_YZvPfrnEwf3GUnNISBEGPBMwh_npQLfYm7zO0p9WWyc_vUYdAG82Cq6K15TFJCwVctPlKIYrgskxwEL-V_U3q21tQqOdQZlmjO5OcU-qm0Q2XI2s3_nZdy8NWaflQ"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-[24px]">
+        <h3 class="font-headline-md text-[32px] leading-[40px] font-semibold text-white mb-2">Barbershop Platform</h3>
+        <a href="/case-study" class="text-white font-label-mono text-[12px] mb-4 flex items-center gap-2 hover:underline">
+          Read Case Study <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+        <div class="flex gap-2">
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">React</span>
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Tailwind</span>
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Next.js</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 2: Church -->
+    <article class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted">
+      <img
+        alt="Church Website Project"
+        class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQag4A1S5hxAnguBlYsHwZQjvT4strv1FTz-tmlQP_-z-K8eLA-pr-GO1_1qSd1QDDUb7lIZxqG1aTRqG7BWum8Yeap3rV-y51z_Q10oY1AzY1YE9Vl0IWLHdomE1RlnrEIIWMU0SOE95Rr_YZvPfrnEwf3GUnNISBEGPBMwh_npQLfYm7zO0p9WWyc_vUYdAG82Cq6K15TFJCwVctPlKIYrgskxwEL-V_U3q21tQqOdQZlmjO5OcU-qm0Q2XI2s3_nZdy8NWaflQ"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-[24px]">
+        <h3 class="font-headline-md text-[32px] leading-[40px] font-semibold text-white mb-2">Church Community</h3>
+        <a href="/case-study" class="text-white font-label-mono text-[12px] mb-4 flex items-center gap-2 hover:underline">
+          Read Case Study <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+        <div class="flex gap-2">
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">React</span>
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Tailwind</span>
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Astro</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 3: Lawn Care -->
+    <article class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted">
+      <img
+        alt="Lawn Care Website Project"
+        class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQag4A1S5hxAnguBlYsHwZQjvT4strv1FTz-tmlQP_-z-K8eLA-pr-GO1_1qSd1QDDUb7lIZxqG1aTRqG7BWum8Yeap3rV-y51z_Q10oY1AzY1YE9Vl0IWLHdomE1RlnrEIIWMU0SOE95Rr_YZvPfrnEwf3GUnNISBEGPBMwh_npQLfYm7zO0p9WWyc_vUYdAG82Cq6K15TFJCwVctPlKIYrgskxwEL-V_U3q21tQqOdQZlmjO5OcU-qm0Q2XI2s3_nZdy8NWaflQ"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-[24px]">
+        <h3 class="font-headline-md text-[32px] leading-[40px] font-semibold text-white mb-2">Lawn Care Pro</h3>
+        <a href="/case-study" class="text-white font-label-mono text-[12px] mb-4 flex items-center gap-2 hover:underline">
+          Read Case Study <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+        <div class="flex gap-2">
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">React</span>
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Tailwind</span>
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Next.js</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 4: Music Venue -->
+    <article class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted">
+      <img
+        alt="Music Venue Website Project"
+        class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQag4A1S5hxAnguBlYsHwZQjvT4strv1FTz-tmlQP_-z-K8eLA-pr-GO1_1qSd1QDDUb7lIZxqG1aTRqG7BWum8Yeap3rV-y51z_Q10oY1AzY1YE9Vl0IWLHdomE1RlnrEIIWMU0SOE95Rr_YZvPfrnEwf3GUnNISBEGPBMwh_npQLfYm7zO0p9WWyc_vUYdAG82Cq6K15TFJCwVctPlKIYrgskxwEL-V_U3q21tQqOdQZlmjO5OcU-qm0Q2XI2s3_nZdy8NWaflQ"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-[24px]">
+        <h3 class="font-headline-md text-[32px] leading-[40px] font-semibold text-white mb-2">Music Venue</h3>
+        <a href="/case-study" class="text-white font-label-mono text-[12px] mb-4 flex items-center gap-2 hover:underline">
+          Read Case Study <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+        <div class="flex gap-2">
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">React</span>
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Tailwind</span>
+          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Astro</span>
+        </div>
+      </div>
+    </article>
+  </section>
 </Layout>

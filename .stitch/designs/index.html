@@ -1,0 +1,294 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Christopher Harley - Design Engineer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-fixed": "#e8e1db",
+                "surface-container-high": "#eee7de",
+                "error-container": "#ffdad6",
+                "on-secondary-fixed": "#1e1b17",
+                "on-secondary-fixed-variant": "#4a4641",
+                "tertiary-container": "#1b1b1d",
+                "secondary": "#625e59",
+                "surface-container-highest": "#e8e1d9",
+                "inverse-surface": "#33302a",
+                "surface": "#fff8f1",
+                "inverse-on-surface": "#f7f0e7",
+                "on-background": "#1e1b16",
+                "on-error": "#ffffff",
+                "on-surface": "#1e1b16",
+                "outline": "#7c766e",
+                "secondary-container": "#e5ded8",
+                "surface-container": "#f4ede4",
+                "outline-variant": "#cdc5bc",
+                "surface-bright": "#fff8f1",
+                "surface-dim": "#e0d9d0",
+                "surface-variant": "#e8e1d9",
+                "on-tertiary-fixed": "#1b1b1d",
+                "on-tertiary": "#ffffff",
+                "surface-container-low": "#faf2ea",
+                "primary": "#181613",
+                "tertiary-fixed": "#e4e2e4",
+                "on-tertiary-container": "#858386",
+                "tertiary": "#181613",
+                "on-primary-fixed-variant": "#494642",
+                "background": "#fff8f1",
+                "on-error-container": "#93000a",
+                "on-secondary": "#ffffff",
+                "primary-container": "#1d1b18",
+                "surface-container-lowest": "#ffffff",
+                "on-primary-fixed": "#1d1b18",
+                "on-primary-container": "#87837f",
+                "on-tertiary-fixed-variant": "#474649",
+                "secondary-fixed-dim": "#ccc5bf",
+                "on-surface-variant": "#4b463f",
+                "on-primary": "#ffffff",
+                "primary-fixed": "#e8e1dc",
+                "error": "#ba1a1a",
+                "inverse-primary": "#cbc5c0",
+                "primary-fixed-dim": "#cbc5c0",
+                "on-secondary-container": "#66625d",
+                "text-primary": "#181613",
+                "text-secondary": "#4b463f",
+                "border-muted": "#cdc5bc",
+                "surface-subtle": "#f4ede4"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "sm": "8px",
+                "container-max": "1280px",
+                "lg": "24px",
+                "md": "16px",
+                "base": "4px",
+                "xl": "48px",
+                "gutter": "24px",
+                "xs": "4px",
+                "section-v-space": "160px",
+                "unit": "16px",
+                "max-width": "1120px",
+                "edge-padding": "48px"
+        },
+        "fontFamily": {
+                "headline-lg": [
+                        "Hanken Grotesk"
+                ],
+                "headline-lg-mobile": [
+                        "Hanken Grotesk"
+                ],
+                "label-mono": [
+                        "JetBrains Mono"
+                ],
+                "display-lg": [
+                        "Hanken Grotesk"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Hanken Grotesk"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "caption": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-mono": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display-lg": [
+                        "72px",
+                        {
+                                "lineHeight": "80px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.7",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "400"
+                        }
+                ],
+                "caption": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .grayscale-filter {
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+        .grayscale-filter:hover {
+            filter: grayscale(80%);
+        }
+      </style>
+</head>
+<body class="bg-background text-text-primary font-body-md antialiased selection:bg-text-primary selection:text-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav aria-label="Main Navigation" class="bg-background fixed top-0 w-full z-50 border-b border-border-muted">
+<div class="flex justify-between items-center h-20 px-edge-padding max-w-max-width mx-auto">
+<a class="font-headline-md text-headline-md font-semibold text-text-primary transition-colors hover:text-primary" href="#">Christopher Harley</a>
+<div class="hidden md:flex gap-8">
+<a class="text-text-secondary font-label-mono text-label-mono hover:text-primary transition-colors duration-200" href="#">About</a>
+<a class="text-text-secondary font-label-mono text-label-mono hover:text-primary transition-colors duration-200" href="#">Contact</a>
+</div>
+<button aria-label="Open menu" class="md:hidden text-text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-[80px]"><!-- Hero Section -->
+<section class="max-w-max-width mx-auto px-edge-padding md:px-edge-padding py-section-v-space flex flex-col items-center justify-center text-center min-h-[512px]">
+<h1 class="font-display-lg text-display-lg text-text-primary mb-unit">Design Engineer</h1>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-2xl">Hi I'm Christopher, I build websites for agencies and small business's. Please reach out via the contact page to inquire about working together.</p>
+</section>
+<!-- Gallery Section -->
+<section class="max-w-max-width mx-auto px-edge-padding md:px-edge-padding pb-section-v-space flex flex-col gap-section-v-space mb-section-v-space">
+<!-- Project 1: Barbershop -->
+<article class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted">
+<img alt="Barbershop Website Project" class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQag4A1S5hxAnguBlYsHwZQjvT4strv1FTz-tmlQP_-z-K8eLA-pr-GO1_1qSd1QDDUb7lIZxqG1aTRqG7BWum8Yeap3rV-y51z_Q10oY1AzY1YE9Vl0IWLHdomE1RlnrEIIWMU0SOE95Rr_YZvPfrnEwf3GUnNISBEGPBMwh_npQLfYm7zO0p9WWyc_vUYdAG82Cq6K15TFJCwVctPlKIYrgskxwEL-V_U3q21tQqOdQZlmjO5OcU-qm0Q2XI2s3_nZdy8NWaflQ">
+<div class="absolute inset-0 bg-gradient-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-gutter">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Barbershop Platform</h3>
+<a class="text-white font-label-mono text-label-mono mb-4 flex items-center gap-2 hover:underline" href="#">
+      Read Case Study <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<div class="flex gap-2">
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">React</span>
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Tailwind</span>
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Next.js</span>
+</div>
+</div>
+</article>
+<!-- Project 2: Church -->
+<article class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted">
+<img alt="Barbershop Website Project" class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQag4A1S5hxAnguBlYsHwZQjvT4strv1FTz-tmlQP_-z-K8eLA-pr-GO1_1qSd1QDDUb7lIZxqG1aTRqG7BWum8Yeap3rV-y51z_Q10oY1AzY1YE9Vl0IWLHdomE1RlnrEIIWMU0SOE95Rr_YZvPfrnEwf3GUnNISBEGPBMwh_npQLfYm7zO0p9WWyc_vUYdAG82Cq6K15TFJCwVctPlKIYrgskxwEL-V_U3q21tQqOdQZlmjO5OcU-qm0Q2XI2s3_nZdy8NWaflQ">
+<div class="absolute inset-0 bg-gradient-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-gutter">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Barbershop Platform</h3>
+<a class="text-white font-label-mono text-label-mono mb-4 flex items-center gap-2 hover:underline" href="#">
+      Read Case Study <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<div class="flex gap-2">
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">React</span>
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Tailwind</span>
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Next.js</span>
+</div>
+</div>
+</article>
+<!-- Project 3: Lawn Care -->
+<article class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted">
+<img alt="Barbershop Website Project" class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQag4A1S5hxAnguBlYsHwZQjvT4strv1FTz-tmlQP_-z-K8eLA-pr-GO1_1qSd1QDDUb7lIZxqG1aTRqG7BWum8Yeap3rV-y51z_Q10oY1AzY1YE9Vl0IWLHdomE1RlnrEIIWMU0SOE95Rr_YZvPfrnEwf3GUnNISBEGPBMwh_npQLfYm7zO0p9WWyc_vUYdAG82Cq6K15TFJCwVctPlKIYrgskxwEL-V_U3q21tQqOdQZlmjO5OcU-qm0Q2XI2s3_nZdy8NWaflQ">
+<div class="absolute inset-0 bg-gradient-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-gutter">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Barbershop Platform</h3>
+<a class="text-white font-label-mono text-label-mono mb-4 flex items-center gap-2 hover:underline" href="#">
+      Read Case Study <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<div class="flex gap-2">
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">React</span>
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Tailwind</span>
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Next.js</span>
+</div>
+</div>
+</article>
+<!-- Project 4: Music Venue -->
+<article class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted">
+<img alt="Barbershop Website Project" class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQag4A1S5hxAnguBlYsHwZQjvT4strv1FTz-tmlQP_-z-K8eLA-pr-GO1_1qSd1QDDUb7lIZxqG1aTRqG7BWum8Yeap3rV-y51z_Q10oY1AzY1YE9Vl0IWLHdomE1RlnrEIIWMU0SOE95Rr_YZvPfrnEwf3GUnNISBEGPBMwh_npQLfYm7zO0p9WWyc_vUYdAG82Cq6K15TFJCwVctPlKIYrgskxwEL-V_U3q21tQqOdQZlmjO5OcU-qm0Q2XI2s3_nZdy8NWaflQ">
+<div class="absolute inset-0 bg-gradient-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-gutter">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Barbershop Platform</h3>
+<a class="text-white font-label-mono text-label-mono mb-4 flex items-center gap-2 hover:underline" href="#">
+      Read Case Study <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<div class="flex gap-2">
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">React</span>
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Tailwind</span>
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Next.js</span>
+</div>
+</div>
+</article>
+<!-- Project 5: Restaurant -->
+<article class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted">
+<img alt="Barbershop Website Project" class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQag4A1S5hxAnguBlYsHwZQjvT4strv1FTz-tmlQP_-z-K8eLA-pr-GO1_1qSd1QDDUb7lIZxqG1aTRqG7BWum8Yeap3rV-y51z_Q10oY1AzY1YE9Vl0IWLHdomE1RlnrEIIWMU0SOE95Rr_YZvPfrnEwf3GUnNISBEGPBMwh_npQLfYm7zO0p9WWyc_vUYdAG82Cq6K15TFJCwVctPlKIYrgskxwEL-V_U3q21tQqOdQZlmjO5OcU-qm0Q2XI2s3_nZdy8NWaflQ">
+<div class="absolute inset-0 bg-gradient-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-gutter">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Barbershop Platform</h3>
+<a class="text-white font-label-mono text-label-mono mb-4 flex items-center gap-2 hover:underline" href="#">
+      Read Case Study <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<div class="flex gap-2">
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">React</span>
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Tailwind</span>
+<span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">Next.js</span>
+</div>
+</div>
+</article>
+</section></main>
+<!-- Footer -->
+<footer aria-label="Footer" class="bg-background w-full py-unit border-t border-border-muted mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-edge-padding max-w-max-width mx-auto gap-4">
+<span class="font-label-mono text-label-mono text-text-secondary">@2026 Christopher Harley</span>
+<div class="flex gap-4">
+<a class="font-caption text-caption text-text-secondary hover:text-text-primary transition-colors" href="#">About</a>
+<a class="font-caption text-caption text-text-secondary hover:text-text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

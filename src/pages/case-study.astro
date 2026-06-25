@@ -1,0 +1,288 @@
+---
+export const prerender = true;
+
+import "../styles/global.css";
+import { CaseStudyCarousel } from "../components/case-study-carousel";
+---
+
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Case Study: mergekonflict.com | Christopher Harley</title>
+    <meta name="description" content="Building a unified digital presence for a rising underground dnb artist." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body class="bg-background text-on-surface antialiased min-h-screen flex flex-col" style="font-family: 'Inter', sans-serif;">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border-muted">
+      <div class="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+        <a class="font-headline-lg text-[20px] tracking-tight text-text-primary" href="/">Christopher Harley</a>
+        <div class="flex items-center gap-8">
+          <a href="/about" class="text-text-secondary hover:text-text-primary transition-colors text-[14px] font-medium uppercase tracking-wider">About</a>
+          <a href="/contact" class="text-text-secondary hover:text-text-primary transition-colors text-[14px] font-medium uppercase tracking-wider">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="mt-24 flex-grow">
+      <!-- Case Study Header -->
+      <section class="max-w-max-width mx-auto px-edge-padding pt-24 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <div class="md:col-span-8">
+            <h1 class="font-display-lg text-display-lg text-text-primary mb-6">mergekonflict.com</h1>
+            <p class="font-headline-md text-headline-md font-normal text-text-secondary max-w-2xl">
+              Building a unified digital presence for a rising underground dnb artist.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 gap-gutter mt-16 pt-8 border-t border-border-muted md:grid-cols-4">
+          <div>
+            <span class="font-label-mono text-label-mono text-text-secondary uppercase block mb-2">Client</span>
+            <span class="font-body-md text-body-md text-text-primary">Merge Konflict</span>
+          </div>
+          <div>
+            <span class="font-label-mono text-label-mono text-text-secondary uppercase block mb-2">Services</span>
+            <span class="font-body-md text-body-md text-text-primary">Strategy, UI/UX, Web Dev</span>
+          </div>
+          <div>
+            <span class="font-label-mono text-label-mono text-text-secondary uppercase block mb-2">Technology</span>
+            <span class="font-body-md text-body-md text-text-primary">Next.js, Sanity</span>
+          </div>
+          <div class="mt-8 md:mt-0">
+            <span class="font-label-mono text-label-mono text-text-secondary uppercase block mb-2">Live Link</span>
+            <a class="font-body-md text-body-md text-text-primary hover:text-primary transition-colors flex items-center gap-1 group" href="https://mergekonflict.com" target="_blank">
+              Visit Website
+              <span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">north_east</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hero Image -->
+      <section class="max-w-max-width mx-auto px-edge-padding mb-12">
+        <img
+          alt="A polished hero shot of mergekonflict.com displayed on a MacBook Pro screen in a minimalist setting"
+          class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmhEcUUJsCxxwxHxSflwOcokzMiN6_je__Yv5nmAMG3sWU-FdZ2gAe_Uw2eanXVSJJ00qC_0cv06vUFAto-xovlx-nTxXAH0uQbsrJdKfPNSSalieZ4_-QUAN7-YZn9kutiaTYghNI2e6yfIimBW5U24VlQgG9lVycvwjOEj3-xi5pBk2rB2GWv2-YpMJJTdzV3o-t9ihZsDhH68-p6QJXORvjr-8rEsCuOrm4JbB06tJJSBv8J0Lfpq4E6AFcg9YpN-8ZLi7LI7E"
+        />
+      </section>
+
+      <!-- Problem -->
+      <section class="bg-surface-container-low py-section-v-space">
+        <div class="max-w-max-width mx-auto px-edge-padding flex flex-col gap-12">
+          <div class="flex flex-col gap-6">
+            <div>
+              <h2 class="font-headline-md text-headline-md text-text-primary max-w-2xl">A DJ Without a Stage</h2>
+            </div>
+            <div>
+              <p class="font-body-md text-body-md text-text-secondary mb-6">
+                Merge Konflict had no website — only scattered social media profiles. For a working DJ, that's a missed booking opportunity. Personal brand sites increase inquiries by ~40% compared to social-media-only presences.
+              </p>
+              <p class="font-body-md text-body-md text-text-secondary">
+                In today's day and age in the underground scene, discoverability depends on owning a credible, searchable web presence. Transitioning from fragmented social handles to a unified platform was critical for professional expansion.
+              </p>
+            </div>
+          </div>
+          <img
+            alt="A visual comparison showing the transition from fragmented social media profiles to a unified professional website"
+            class="w-full h-auto block"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsWLNGDxNv9RJAV0HfvDvDyUjSNpJ0cb87pFKJisW4ed5bCrMXadZeMKK9Ol36UfVrvlU49X0Mu4uDfdYH6Wt43eQS_bovUBSzjE-4x3Wu7rPL8lb-JxQVPFMXSCZZNfqi1-zMoJWSHRbgQEMPZFM2LDYIs2EKbnlw37nndfCrh87PaJXKkM_FWM7hSTL19EILAK8LLdXE2QhJ2et2heA9BsNCT_Qbo-HF8pcyjQQhu9dpX1n9kbnyA-K2eZzQIO6HeCBSSFhUPPA"
+          />
+        </div>
+      </section>
+
+      <!-- Role -->
+      <section class="max-w-max-width mx-auto px-edge-padding py-section-v-space">
+        <div class="flex flex-col gap-12">
+          <div class="flex flex-col gap-6">
+            <div>
+              <h2 class="font-headline-md text-headline-md text-text-primary max-w-2xl">Designer, Developer, and Agent Wrangler</h2>
+            </div>
+            <div>
+              <p class="font-body-md text-body-md text-text-secondary mb-6">
+                Solo Designer, Developer &amp; Project Manager. My team was a fleet of specialized AI agents — Gemini CLI for implementation, sub-agents for frontend, CMS, and code review, plus MCP integrations.
+              </p>
+              <p class="font-body-md text-body-md text-text-secondary">
+                I planned the architecture, wrote the specs, reviewed every line, and steered the agents through each phase.
+              </p>
+            </div>
+          </div>
+          <img
+            alt="Gemini CLI Terminal Screenshot showing agentic engineering workflow"
+            class="w-full h-auto block border border-border-muted"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbLPPO6itqo6hNb95o3B1pkuMtUCLJlspEhkNAEpZq9M6MsawijzY5e3RVdRC_-YlJJh76HwItv4Hn9N4IFNvGM0wWBXAeey1NJxCUiRk_Agw7932OSHSovAjWxMxovlMAE4PqaQAFNl-vr6pg2J9aJqNuY1eQEE8XK8X2_fv2hhXn2JoluFhCcT0C59ITX-8eRd_64RlH3Om_90A2i37oF02rPO7L_lzVq1PhGU3B3WXBMSUu9v4UQt296XgFIWijMNoYhl25Z-4"
+          />
+        </div>
+      </section>
+
+      <!-- Methodology -->
+      <section class="bg-primary-container py-section-v-space">
+        <div class="max-w-max-width mx-auto px-edge-padding">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-16">
+            <div class="md:col-span-5">
+              <h2 class="font-headline-md text-headline-md text-surface-bright">Spec-Driven Agentic Engineering</h2>
+            </div>
+            <div class="md:col-span-7">
+              <p class="font-body-md text-body-md text-on-primary-container">
+                The methodology followed a tight loop: Plan → Spec → Agent → Review → Merge → Deploy. This rigorous cycle ensured that every component met strict technical and design standards without manual coding.
+              </p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-y-12 gap-x-gutter">
+            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
+              <span class="font-label-mono text-label-mono text-surface-dim">01</span>
+              <h3 class="font-body-md font-bold text-surface-bright">Architecture Definition</h3>
+              <p class="font-body-md text-body-md text-on-primary-container">Mapping out the single-page structure and CMS requirements before a single line of code is generated.</p>
+            </div>
+            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
+              <span class="font-label-mono text-label-mono text-surface-dim">02</span>
+              <h3 class="font-body-md font-bold text-surface-bright">Precision Spec Writing</h3>
+              <p class="font-body-md text-body-md text-on-primary-container">Creating high-fidelity prompts and Markdown specs that describe the UI and logic in exhaustive detail.</p>
+            </div>
+            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
+              <span class="font-label-mono text-label-mono text-surface-dim">03</span>
+              <h3 class="font-body-md font-bold text-surface-bright">Agent Invocation</h3>
+              <p class="font-body-md text-body-md text-on-primary-container">Deploying LLM agents via CLI to execute specific tasks based on the provided specs.</p>
+            </div>
+            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
+              <span class="font-label-mono text-label-mono text-surface-dim">04</span>
+              <h3 class="font-body-md font-bold text-surface-bright">Human Review Loop</h3>
+              <p class="font-body-md text-body-md text-on-primary-container">Validating the agent output against the design system and functional requirements.</p>
+            </div>
+            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
+              <span class="font-label-mono text-label-mono text-surface-dim">05</span>
+              <h3 class="font-body-md font-bold text-surface-bright">Iterative Refinement</h3>
+              <p class="font-body-md text-body-md text-on-primary-container">Providing corrective feedback to agents for edge cases, performance bugs, or styling tweaks.</p>
+            </div>
+            <div class="flex flex-col gap-4 border-l border-[#e8e1dc]/20 pl-6">
+              <span class="font-label-mono text-label-mono text-surface-dim">06</span>
+              <h3 class="font-body-md font-bold text-surface-bright">Automated Deployment</h3>
+              <p class="font-body-md text-body-md text-on-primary-container">Merging verified code into the main branch and triggering CI/CD pipelines to the edge.</p>
+            </div>
+          </div>
+          <div class="mt-20 border border-[#e8e1dc]/10 flex items-center justify-center">
+            <img
+              alt="Spec-driven process and a real spec file"
+              class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700 block"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZaDPg0_9901PwgwzZOPNtyR1iB0LTHgdN8n30-pQnzUnuuZrjKUXcoQQJI3TOQyoBfJqvd656hj6MtZNC9GWFnYIQjIV0pN8LHlAr8NrjgeuAX-1MLpJSqHqE90NkvQqQdhim5cQ2YqhPkqb6_94I-gzig-o_2i1R0nCuz7bstpXkFQ-rN3eJqrxMGDcQnMFEuRP7aYBaSe9195kV2KMak3umv7Y7Jsd_UDh7bdCTATduhRKl_fJ9ufa8sYti705I9DQocCcucCA"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Challenges & Fixes -->
+      <section class="max-w-max-width mx-auto px-edge-padding py-section-v-space">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <div class="md:col-span-4 flex flex-col gap-8">
+            <h2 class="font-headline-md text-headline-md text-text-primary">SoundCloud, Crashes, and Invisible Errors</h2>
+            <div class="flex flex-col gap-12">
+              <div class="flex flex-col gap-2">
+                <h4 class="font-body-md font-bold text-text-primary uppercase tracking-tight">SoundCloud URN Bug</h4>
+                <p class="font-body-md text-body-md text-text-secondary">Resolving API discrepancies where specific track identifiers failed to hydrate the custom audio player correctly.</p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h4 class="font-body-md font-bold text-text-primary uppercase tracking-tight">Contact Form "Something Went Wrong"</h4>
+                <p class="font-body-md text-body-md text-text-secondary">Debugging a silent failure in the edge function resulting from a missing environment variable in the agent's context.</p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h4 class="font-body-md font-bold text-text-primary uppercase tracking-tight">Production Crash After Adding One Field</h4>
+                <p class="font-body-md text-body-md text-text-secondary">A schema mismatch in the CMS caused a total hydration failure. Fixed via agent-led rollback and schema alignment.</p>
+              </div>
+            </div>
+          </div>
+          <div class="md:col-span-8">
+            <div class="w-full flex flex-col items-center justify-center relative">
+              <img
+                alt="SoundCloud CMS Integration"
+                class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-500 rounded-lg border border-border-muted"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcwvIYJhoUVDbcAR6awyaIRkscEk7yAKIl0pw4kEZCoAtJ-Ehmmk4aCb-fonAo_fiO6B_yWidKNmUcM3sz9CY0cUBAPCnRvegtVlmjlYofSQu9t8cQTjoKnSB4yaaGJSoFHl-HNZlzrH3nmrx4Fb2KSwDWpgb6M3khCYZu9HOEQn0pX8vmGZWnoy7g-mDAJsBVkl6tWJsNUMsBbT3Fx6eUq-WNl8iaxMm665Bi0-xD_r6nrAt4UUYoAbqjgBbiiXLTigEwh3eFXXo"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Solution -->
+      <section class="bg-surface-container-high py-section-v-space">
+        <div class="max-w-max-width mx-auto px-edge-padding">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-20 md:items-center">
+            <div class="md:col-span-5 flex flex-col justify-center">
+              <h2 class="font-headline-md text-headline-md text-text-primary mb-6">A Complete Digital Stage, CMS-Powered</h2>
+              <p class="font-body-md text-body-md text-text-secondary mb-0">
+                A single-page, mobile-first artist website with six CMS-managed sections, custom audio player, and perfect Lighthouse scores. The final product is a testament to the efficiency of AI orchestration.
+              </p>
+            </div>
+            <div class="hidden md:block md:col-span-1 flex justify-center items-center">
+              <div class="h-full w-px bg-border-muted"></div>
+            </div>
+            <div class="md:col-span-6 flex flex-col justify-center">
+              <ul class="flex flex-col gap-4">
+                <li class="flex items-center gap-4">
+                  <span class="material-symbols-outlined text-secondary">done</span>
+                  <span class="font-body-md text-body-md text-text-primary">Hero &amp; Visual Identity</span>
+                </li>
+                <li class="flex items-center gap-4">
+                  <span class="material-symbols-outlined text-secondary">done</span>
+                  <span class="font-body-md text-body-md text-text-primary">Upcoming Shows (Live Sync)</span>
+                </li>
+                <li class="flex items-center gap-4">
+                  <span class="material-symbols-outlined text-secondary">done</span>
+                  <span class="font-body-md text-body-md text-text-primary">Latest Mixes (SoundCloud API)</span>
+                </li>
+                <li class="flex items-center gap-4">
+                  <span class="material-symbols-outlined text-secondary">done</span>
+                  <span class="font-body-md text-body-md text-text-primary">About &amp; Biography</span>
+                </li>
+                <li class="flex items-center gap-4">
+                  <span class="material-symbols-outlined text-secondary">done</span>
+                  <span class="font-body-md text-body-md text-text-primary">Connect &amp; Social Ecosystem</span>
+                </li>
+                <li class="flex items-center gap-4">
+                  <span class="material-symbols-outlined text-secondary">done</span>
+                  <span class="font-body-md text-body-md text-text-primary">Direct Booking Contact</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- shadcn Carousel -->
+          <div class="w-full mt-12">
+            <CaseStudyCarousel client:load />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Prev / Next Navigation -->
+    <section class="bg-background py-section-v-space">
+      <div class="max-w-max-width mx-auto px-edge-padding flex flex-col items-center gap-8">
+        <div class="flex flex-row items-center gap-8">
+          <a class="font-label-mono text-label-mono uppercase tracking-widest text-text-secondary hover:text-primary transition-colors flex items-center gap-2 group" href="/">
+            <span class="material-symbols-outlined text-[16px] group-hover:-translate-x-0.5 transition-transform">west</span>
+            Prev Project
+          </a>
+          <span class="w-px h-4 bg-border-muted"></span>
+          <a class="font-label-mono text-label-mono uppercase tracking-widest text-text-secondary hover:text-primary transition-colors flex items-center gap-2 group" href="/">
+            Next Project
+            <span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">east</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low w-full py-unit border-t border-border-muted mt-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center px-edge-padding max-w-max-width mx-auto gap-4">
+        <span class="font-label-mono text-label-mono text-text-secondary">@2026 Christopher Harley</span>
+        <div class="flex gap-4">
+          <a href="/about" class="font-body-md text-sm text-text-secondary hover:text-text-primary transition-colors">About</a>
+          <a href="/contact" class="font-body-md text-sm text-text-secondary hover:text-text-primary transition-colors">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
