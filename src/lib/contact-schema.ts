@@ -23,30 +23,8 @@ export const contactSchema = z.object({
 
 export type ContactFormValues = z.infer<typeof contactSchema>
 
-export type ContactFormState = {
-  values: ContactFormValues
-  errors: null | Partial<Record<keyof ContactFormValues, string[]>>
-  success: boolean
-  serverError: string | null
-}
-
-export const inquiryLabels: Record<string, string> = {
-  agency: 'Agency Role',
-  freelance: 'Freelance Project',
-  hi: 'Just saying hi',
-}
-
-export function narrowInquiry(
-  value: string | undefined,
-): 'agency' | 'freelance' | 'hi' {
-  if (value === 'agency' || value === 'freelance' || value === 'hi') {
-    return value
-  }
-  return 'hi'
-}
-
 /**
- * Parse Zod 4 errors into a flat field-errors map.
+ * Parse Zod errors into a flat field-errors map.
  */
 export function parseZodErrors(
   error: z.ZodError<ContactFormValues>,

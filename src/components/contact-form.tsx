@@ -1,60 +1,107 @@
 'use client'
 
-import { useActionState, useEffect, useRef } from 'react'
+import { useActionState, useRef } from 'react'
 import { ArrowRight, CheckCircle } from 'lucide-react'
 
 import { Button } from './ui/button'
 import { Field, FieldGroup, FieldLabel, FieldError } from './ui/field'
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
-import { type ContactFormState } from '../lib/contact-schema'
+import {
+  contactSchema,
+  parseZodErrors,
+  type ContactFormValues,
+} from '../lib/contact-schema'
 
-const initialState: ContactFormState = {
+type FormState = {
+  values: ContactFormValues
+  errors: null | Partial<Record<keyof ContactFormValues, string[]>>
+  success: boolean
+  serverError: string | null
+}
+
+const initialState: FormState = {
   values: { name: '', email: '', inquiry: 'freelance', message: '' },
   errors: null,
   success: false,
   serverError: null,
 }
 
-async function contactAction(
-  _prevState: ContactFormState,
+const inquiryLabels: Record<string, string> = {
+  agency: 'Agency Role',
+  freelance: 'Freelance Project',
+  hi: 'Just saying hi',
+}
+
+async function netlifyAction(
+  prevState: FormState,
   formData: FormData,
-): Promise<ContactFormState> {
+): Promise<FormState> {
+  const values = {
+    name: (formData.get('name') as string) || '',
+    email: (formData.get('email') as string) || '',
+    inquiry: (formData.get('inquiry') as string) || 'freelance',
+    message: (formData.get('message') as string) || '',
+  } as ContactFormValues
+
+  // Validate on the client before sending to Netlify
+  const result = contactSchema.safeParse(values)
+  if (!result.success) {
+    return {
+      values,
+      errors: parseZodErrors(result.error),
+      success: false,
+      serverError: null,
+    }
+  }
+
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), 15000)
 
   try {
-    const response = await fetch('/api/contact', {
+    // Submit directly to Netlify Forms
+    const body = new URLSearchParams()
+    body.append('form-name', 'contact')
+    body.append('name', result.data.name)
+    body.append('email', result.data.email)
+    body.append('inquiry', inquiryLabels[result.data.inquiry])
+    body.append('message', result.data.message)
+
+    const response = await fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: (() => {
-        const params = new URLSearchParams()
-        for (const [key, value] of formData.entries()) {
-          if (typeof value === 'string') {
-            params.append(key, value)
-          }
-        }
-        return params.toString()
-      })(),
+      body: body.toString(),
       signal: controller.signal,
     })
 
-    return (await response.json()) as ContactFormState
+    if (!response.ok) {
+      throw new Error('Something went wrong. Please try again.')
+    }
+
+    return {
+      values: { name: '', email: '', inquiry: 'freelance', message: '' },
+      errors: null,
+      success: true,
+      serverError: null,
+    }
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') {
       return {
-        ..._prevState,
+        ...prevState,
         success: false,
         serverError: 'Request timed out. Please try again.',
       }
     }
     return {
-      ..._prevState,
+      ...prevState,
+      errors: null,
       success: false,
       serverError:
         error instanceof TypeError
           ? 'Unable to connect. Please check your internet connection.'
-          : 'Something went wrong. Please try again.',
+          : error instanceof Error
+            ? error.message
+            : 'Something went wrong. Please try again.',
     }
   } finally {
     clearTimeout(timeoutId)
@@ -63,16 +110,10 @@ async function contactAction(
 
 export function ContactForm() {
   const [state, formAction, pending] = useActionState(
-    contactAction,
+    netlifyAction,
     initialState,
   )
   const formRef = useRef<HTMLFormElement>(null)
-
-  useEffect(() => {
-    if (state.success) {
-      formRef.current?.reset()
-    }
-  }, [state.success])
 
   if (state.success) {
     return (
@@ -88,9 +129,7 @@ export function ContactForm() {
         </p>
         <Button
           variant="outline"
-          onClick={() =>
-            formRef.current?.scrollIntoView({ behavior: 'smooth' })
-          }
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           Send another
         </Button>
