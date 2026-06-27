@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-secondary-fixed: #e8e1db;
@@ -62,7 +62,7 @@
   --font-caption: 'Inter', sans-serif;
 
   --spacing-unit: 16px;
-  --spacing-edge-padding: 48px;
+  --spacing-edge-padding: 16px;
   --spacing-max-width: 1120px;
   --spacing-section-v-space: 160px;
   --spacing-gutter: 24px;
@@ -110,13 +110,9 @@ body {
 }
 
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-}
-
-.grayscale-filter {
-  filter: grayscale(100%);
-  transition: scale 0.7s ease-out, filter 0.7s ease-out;
-}
-.group:hover .grayscale-filter {
-  filter: grayscale(80%);
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24;
 }

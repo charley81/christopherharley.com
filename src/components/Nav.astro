@@ -1,4 +1,5 @@
 ---
+import MobileNav from './MobileNav'
 import { navLinks } from '../data/navigation'
 
 export interface Props {
@@ -26,16 +27,22 @@ const containerClass =
       Christopher Harley
     </a>
     <div class="flex items-center gap-8">
-      {
-        navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="text-text-secondary hover:text-text-primary transition-colors text-caption font-medium uppercase tracking-wider"
-          >
-            {link.label}
-          </a>
-        ))
-      }
+      <!-- Desktop nav links -->
+      <div class="hidden md:flex items-center gap-8">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-text-secondary hover:text-text-primary transition-colors text-caption font-medium uppercase tracking-wider"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Mobile hamburger + sidebar -->
+      <MobileNav client:load />
     </div>
   </div>
 </nav>
