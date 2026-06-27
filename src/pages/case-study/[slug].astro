@@ -1,6 +1,7 @@
 ---
 export const prerender = true
 
+import { Image } from 'astro:assets'
 import '../../styles/global.css'
 import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
@@ -68,10 +69,12 @@ const nextProject =
         <div
           class="w-full aspect-video bg-surface-container overflow-hidden rounded-lg border border-outline-variant"
         >
-          <img
+          <Image
             alt={cs.heroImageAlt}
             class="w-full h-full object-cover"
             src={cs.heroImage}
+            width={1920}
+            height={1080}
           />
         </div>
       </section>
@@ -195,11 +198,13 @@ const nextProject =
         <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
           {
             cs.design.images.map((img) => (
-              <div class="aspect-video bg-surface-container overflow-hidden rounded-lg border border-outline-variant">
-                <img
+              <div class="bg-surface-container overflow-hidden rounded-lg border border-outline-variant">
+                <Image
                   alt={img.alt}
-                  class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  class="w-full"
                   src={img.src}
+                  width={Math.min(img.src.width, 1200)}
+                  height={Math.round(Math.min(img.src.width, 1200) * img.src.height / img.src.width)}
                 />
               </div>
             ))

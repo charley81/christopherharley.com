@@ -1,8 +1,16 @@
+import heroMk from '../images/mk-case-study/hero-image.png'
+import img1 from '../images/mk-case-study/image-1.png'
+import img2 from '../images/mk-case-study/image-2.png'
+import img3 from '../images/mk-case-study/image-3.png'
+import img4 from '../images/mk-case-study/image-4.png'
+
+import type { ImageMetadata } from 'astro'
+
 export interface Project {
   title: string
   description: string
   tags: string[]
-  imageUrl: string
+  imageUrl: ImageMetadata
   imageAlt: string
   slug: string
   caseStudy?: CaseStudyContent
@@ -11,7 +19,7 @@ export interface Project {
 export interface CaseStudyContent {
   subtitle: string
   projectUrl: string
-  heroImage: string
+  heroImage: ImageMetadata
   heroImageAlt: string
   industry: string
   category: string[]
@@ -24,7 +32,7 @@ export interface CaseStudyContent {
   }
   design: {
     description: string
-    images: Array<{ src: string; alt: string }>
+    images: Array<{ src: ImageMetadata; alt: string }>
   }
   development: {
     body: string
@@ -40,7 +48,7 @@ function cs(
     title: string
     subtitle: string
     projectUrl: string
-    heroImage: string
+    heroImage: ImageMetadata
     heroImageAlt: string
     industry: string
     category: string[]
@@ -49,7 +57,7 @@ function cs(
     introHeading: string
     introBody: string
     designDescription: string
-    designImages: Array<{ src: string; alt: string }>
+    designImages: Array<{ src: ImageMetadata; alt: string }>
     devBody: string
     conclusionQuote: string
     conclusionBody: string
@@ -83,144 +91,64 @@ function cs(
   }
 }
 
-const placeholderImage =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAQag4A1S5hxAnguBlYsHwZQjvT4strv1FTz-tmlQP_-z-K8eLA-pr-GO1_1qSd1QDDUb7lIZxqG1aTRqG7BWum8Yeap3rV-y51z_Q10oY1AzY1YE9Vl0IWLHdomE1RlnrEIIWMU0SOE95Rr_YZvPfrnEwf3GUnNISBEGPBMwh_npQLfYm7zO0p9WWyc_vUYdAG82Cq6K15TFJCwVctPlKIYrgskxwEL-V_U3q21tQqOdQZlmjO5OcU-qm0Q2XI2s3_nZdy8NWaflQ'
-
-const heroRestaurant =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuD0uXTYMse2ZrRFrvNgZAMe1Kj1IhsBVWS2cHKuxa2z77_-xJ-Ty4YRSBVHKx7EeYCZ-k7RkOzvmOToXcFNR_G15JuifOBMdi3-xcMCBuvAjDcqRHmmXLB4C9e57dhRIqGqe-We57UP7XPAnT1BS-JsSwV7IZeCStZm2qZB2dzlyYJ0b9vhVzzi9uLb98gHDhqtF0LvIfzIsfMHvpCpySQFvKzchFY72loAZUsOxtj68OMCVw8Ea6wzhFu8KFdseymPFGGDX4x0K92sSQ'
-
-const designImage1 =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuALVU_4Lz1gF_jQsUPDVoH3jgQBSBr9uJyydJ_OvQ8Po1-JlDuELfBbet1o5H5l3oLC9ts3kr1lDdcd1JbTkyr5licqC4qi8X5xaqUyE23H0xMbF9oyNycbdc2leB715KND6Ahh38nJTg1FU0AJXLGNUu74j_cw1dG7aAVw-tJLbFErlg5j91saz7VDvjDX_L8p3Hq_WdGjQEjmp1Jz9hZfApM7e9m9hF4bO4_NSaBHnHV_wQA-82D0Yrynrd9rzMH7Cf5B2IXRzMNQaA'
-const designImage2 =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuBbPw--q0a6sVK2wZNk01QkE9SKpuatlgfzwe2COj-xJc94uV1pAo9ZvxJJPYnLyOUmq1Os5qBryzyNkZYG2_aXuWK5WKnQ8o42Uc82gaijWjPZ9TZDeY0ypK8hQHcma31AOTmVp961uu1zsquy7aQyoNhZNC7rRrLfKpDpbVfSIc7JvXCPMNMeZ-Qky5ZgarCeJlV1GqjHxK_5kzmOULXIxGbqZx3msFHLJA0laBMUN_X00c9M5vNjgatiDlS3bDr6WMSBMhxXrcJZkw'
-const designImage3 =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDkz-hTYCcuH6HxslGnhyldlEJsfkuGPO5ekzEiJtVydfWfs1x26QYh424xhRqjgGvdNQbBpbcPoN1YHj4EUOGw9wZA1djBhyGMCeEi3pac89Ma3VaZ4bvFASfsXuX41Cm0SdL3fV_E8OGImAc7_-NYDMx3D6ONHcMNYI1Os-CF0k91LuGxPoR3jTeCnDtVMQXbJLJuaTkM-50BWZI5UyT0UkiTfoIVWH1Cg8NDAjh3TaHVVxNEMICQr6Vil7U35r1v3umDgnTJYbURSQ'
-const designImage4 =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAEMU7p4oBcQd0WZnVmPBXinvndMnvQE5Wuviee4DC4c2KBluBHlXyBlSOV8Mlx9T9JWCNqcidgqCbSJu6carFmMPjmt4xHZyBFGrfyJ7uAwY8wO-Gz--trwo19uxDYkf0ffdOr0J_6CtlW0Jn9AE4RHghS-0jhM0AaPIhMLZsb_1ZpkOyK9Ry1zgQWdEZk7ogKghpDk-1jyjlsSbCy-AVgYKfgrTBoZZRIV0ZesQDQ5RGvYpBu3HLJvU5s_b693bS4Gx3zAb1YFAaRUQ'
-
 export const projects: Project[] = [
   {
-    title: 'Barbershop Platform',
+    title: 'Merge Konflict',
     description:
       'A full-featured booking and scheduling platform for a modern barbershop.',
-    tags: ['React', 'Tailwind', 'Next.js'],
-    imageUrl: placeholderImage,
-    imageAlt: 'Barbershop Website Project',
-    slug: '/case-study/barbershop-platform',
+    tags: ['Next.js', 'Sanity CMS'],
+    imageUrl: heroMk,
+    imageAlt: 'DJ Merge Konflict Website Project',
+    slug: '/case-study/mergekonflict',
     caseStudy: {
       subtitle:
-        'is a modern booking and scheduling platform built for a busy barbershop, featuring real-time availability and client management.',
-      projectUrl: 'https://barbershop.example.com',
-      heroImage: placeholderImage,
-      heroImageAlt: 'Barbershop Platform hero mockup',
-      industry: 'Personal Services',
-      category: ['UX/UI Design', 'Web Development', 'Booking System'],
-      techStack: ['Next.js', 'React', 'Tailwind CSS', 'Supabase'],
-      liveLink: 'https://barbershop.example.com',
+        ' is a personal brand website for a electronic music DJ, featuring an upcoming shows calendar, a custom SoundCloud audio player, and a spam-free contact form.',
+      projectUrl: 'https://mergekonflict.com',
+      heroImage: heroMk,
+      heroImageAlt: 'DJ Website hero mockup',
+      industry: 'Music & Entertainment',
+      category: ['UX/UI Design', 'Web Development', 'CMS Integration'],
+      techStack: [
+        'Next.js',
+        'Sanity CMS',
+        'Tailwind CSS',
+        'Shadcn',
+        'Soundcloud API',
+      ],
+      liveLink: 'https://mergekonflict.com',
       introduction: {
         label: 'Introduction',
-        heading: 'Streamlining the Shop, One Booking at a Time',
-        body: 'The barbershop was running on phone calls and sticky notes. Appointments were double-booked, walk-ins piled up, and the owner was spending hours managing the schedule. We built a full-featured booking platform that lets clients check real-time availability, book their favorite barber, and receive automated reminders — cutting no-shows by 60% and freeing the staff to focus on cuts, not calendars.',
+        heading: 'The making of the new Merge Konflict website',
+        body: 'For a working DJ, a website is the difference between being discoverable and being invisible. Merge Konflict had the music, the shows, and the fanbase — but no digital stage. This project was built using Spec-Driven Agentic Engineering, a methodology where the developer orchestrates a team of specialized AI agents through structured specification documents. Every line of production code was generated by AI, guided by specs, and reviewed before merge. The result: a live, polished site with perfect Lighthouse scores, deployed in under two weeks of part-time work.',
       },
       design: {
         description:
-          "The design blends a warm, masculine palette of charcoal, brass, and cream with bold typography to reflect the shop's craft-focused identity. The interface prioritizes speed — every booking flow takes three taps or fewer. Large hero imagery of fresh fades and hot towel treatments sets the tone, while the admin dashboard provides a clean at-a-glance view of the day's appointments.",
+          "The design language draws from the raw energy of underground rave culture — dark, gritty, and uncompromising. A custom shadcn theme preset anchors the visual identity with deep mahogany backgrounds, a striking red accent for CTAs and links, and soft off-white surfaces for light mode. The artist name sits vertically on the hero's left edge, rotated -90 degrees — an unconventional layout that mirrors the genre's break from tradition. Every section below the hero gets generous whitespace, letting the content breathe on both mobile and desktop. A light/dark toggle gives fans control over their viewing experience.",
         images: [
-          { src: designImage1, alt: 'Barbershop booking interface' },
-          { src: designImage2, alt: 'Barbershop admin dashboard' },
-          { src: designImage3, alt: 'Barbershop mobile booking view' },
-          { src: designImage4, alt: 'Barbershop service details' },
+          {
+            src: img1,
+            alt: 'Barbershop booking interface',
+          },
+          {
+            src: img2,
+            alt: 'Barbershop admin dashboard',
+          },
+          {
+            src: img3,
+            alt: 'Barbershop mobile booking view',
+          },
+          {
+            src: img4,
+            alt: 'Barbershop service details',
+          },
         ],
       },
       development: {
-        body: "Built with Next.js for fast server-rendered pages and Supabase for real-time database updates — when a client books, the barbershop dashboard updates instantly. The booking engine uses a custom time-slot algorithm that respects each barber's working hours, break times, and service durations. Automated SMS reminders via Twilio reduced no-shows by 60% in the first month.",
+        body: "The site was built on Next.js 16 with React Server Components handling all data-fetching sections, reserving Client Components only where browser interactivity is required — the SoundCloud player, contact form, and theme toggle. Sanity CMS powers every piece of content through an embedded Studio at /studio, with three document types covering shows, site settings, and contact submissions; a webhook triggers on-demand ISR so published changes appear on the live site within seconds. The most stubborn challenge came from SoundCloud's 2025 API migration: the embedded player no longer accepted the new URN-based playlist identifiers, requiring a workaround that extracts the legacy numeric ID, stores it as a CMS field, and constructs the embed URL dynamically. A similar debugging effort resolved a production crash caused by a null image reference after adding a new schema field, and a field-name mismatch between the contact form's Server Action and client component was aligned to restore end-to-end submission flow.",
       },
       conclusion: {
-        quote: '"From Sticky Notes to Seamless Scheduling"',
-        body: 'The platform handles over 200 bookings per week with zero double-bookings. Client satisfaction scores improved by 35%, and the shop owner now reclaims 10+ hours per week previously spent on schedule management. The mobile-first design also drove a 45% increase in online bookings from repeat clients.',
-      },
-    },
-  },
-  {
-    title: 'Church Community',
-    description:
-      'A community-driven website for a local church with event management.',
-    tags: ['React', 'Tailwind', 'Astro'],
-    imageUrl: placeholderImage,
-    imageAlt: 'Church Website Project',
-    slug: '/case-study/church-community',
-    caseStudy: {
-      subtitle:
-        'is a welcoming digital home for a growing congregation, with event management, sermon archives, and community connection.',
-      projectUrl: 'https://church.example.com',
-      heroImage: placeholderImage,
-      heroImageAlt: 'Church Community website hero mockup',
-      industry: 'Religious & Community',
-      category: ['UX/UI Design', 'Web Development', 'CMS Implementation'],
-      techStack: ['Astro', 'Tailwind CSS', 'Sanity CMS', 'Vercel'],
-      liveLink: 'https://church.example.com',
-      introduction: {
-        label: 'Introduction',
-        heading: 'Building Community Beyond the Sunday Service',
-        body: "The church needed more than a bulletin board — they needed a digital gathering space. With a growing young congregation, the old static site couldn't keep up with event registrations, sermon uploads, or small group coordination. We designed a warm, accessible platform where members can find upcoming events, listen to past sermons, request prayer, and connect with community groups — all managed through an intuitive CMS that the church staff can update themselves.",
-      },
-      design: {
-        description:
-          'A calming, light-filled design using warm neutrals, soft blues, and generous whitespace evokes a sense of peace and welcome. The typography pairs a serif headline for warmth with a clean sans-serif body for readability. Large cards organize events and sermons visually, while a prominent prayer request button ensures the spiritual mission stays front and center.',
-        images: [
-          { src: designImage1, alt: 'Church website homepage' },
-          { src: designImage2, alt: 'Church event listing page' },
-          { src: designImage3, alt: 'Sermon archive view' },
-          { src: designImage4, alt: 'Small group directory' },
-        ],
-      },
-      development: {
-        body: "Astro delivered near-instant page loads across all devices, critical for a congregation accessing the site on mobile after services. Sanity CMS empowers non-technical staff to publish sermons, update events, and manage small group listings without developer involvement. The sermon audio player uses edge-streaming for instant playback, and event registrations feed directly into the church's existing planning tools via webhooks.",
-      },
-      conclusion: {
-        quote: '"A Digital Welcome Mat for Every Visitor"',
-        body: 'Event attendance grew 50% in the first quarter as members discovered activities through the site. Sermon downloads increased 3x, and 40% of new visitors reported finding the church through search. The CMS autonomy allowed the church to publish 50+ events in the first month without a single developer ticket.',
-      },
-    },
-  },
-  {
-    title: 'Lawn Care Pro',
-    description: 'A professional services website for a lawn care business.',
-    tags: ['React', 'Tailwind', 'Next.js'],
-    imageUrl: placeholderImage,
-    imageAlt: 'Lawn Care Website Project',
-    slug: '/case-study/lawn-care-pro',
-    caseStudy: {
-      subtitle:
-        'is a lead-generation powerhouse for a lawn care company, featuring instant quoting and seasonal service scheduling.',
-      projectUrl: 'https://lawncare.example.com',
-      heroImage: placeholderImage,
-      heroImageAlt: 'Lawn Care Pro website hero mockup',
-      industry: 'Home Services',
-      category: ['UX/UI Design', 'Web Development', 'Lead Generation'],
-      techStack: ['Next.js', 'Tailwind CSS', 'Stripe', 'Google Maps API'],
-      liveLink: 'https://lawncare.example.com',
-      introduction: {
-        label: 'Introduction',
-        heading: 'Turning Curb Appeal into Click-to-Book',
-        body: 'A family-run lawn care business was relying on word-of-mouth and a decade-old Facebook page. Competing against national chains with polished websites meant losing potential customers before they even picked up the phone. We built a lead-generation engine that lets homeowners enter their address, get an instant quote based on lot size, and book a recurring service plan — all in under 60 seconds.',
-      },
-      design: {
-        description:
-          'A fresh, outdoor-inspired palette of deep green, warm earth tones, and sky blue conveys reliability and growth. Before-and-after photo sliders dominate the hero to immediately communicate quality. The instant quote calculator is the centerpiece — a simple, highly visual tool that builds trust through transparency. Service tiers are laid out in clear comparison cards.',
-        images: [
-          { src: designImage1, alt: 'Lawn Care Pro homepage' },
-          { src: designImage2, alt: 'Instant quote calculator' },
-          { src: designImage3, alt: 'Service plan comparison' },
-          { src: designImage4, alt: 'Before and after gallery' },
-        ],
-      },
-      development: {
-        body: "The instant quote feature uses the Google Maps API to calculate lot size from the customer's address, then computes a price based on property acreage, service frequency, and optional add-ons. Next.js serverless functions handle Stripe payment processing for recurring subscriptions. The booking system integrates with the owner's existing calendar via Calendly API, eliminating double-entry.",
-      },
-      conclusion: {
-        quote: '"From Facebook to First Page on Google"',
-        body: 'Within three months, the site generated 150+ qualified leads, with the instant quote tool achieving a 12% conversion rate. The business moved from the second page of local search results to the top 3 positions for "lawn care [city]." Online bookings now account for 70% of new customers, and the owner has hired two additional crews to keep up with demand.',
+        quote: '"A Website as Good as the Music"',
+        body: 'The site launched with nearly perfect Lighthouse scores across all four categories — Performance, Accessibility, Best Practices, and SEO. The contact form is spam-free thanks to a multi-layered invisible defense (honeypots, timing analysis, and Upstash rate limiting). Merge Konflict now updates his own schedule, bio, and playlist through a simple Studio interface. The Spec-Driven Agentic Engineering methodology proved itself: a solo developer, zero lines of implementation code, and a team of specialized AI agents that handled everything from design extraction to production deployment.',
       },
     },
   },
