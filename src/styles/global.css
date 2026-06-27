@@ -119,6 +119,14 @@ body {
     'opsz' 24;
 }
 
+.grayscale-filter {
+  filter: grayscale(100%);
+  transition: scale 0.7s ease-out, filter 0.7s ease-out;
+}
+.group:hover .grayscale-filter {
+  filter: grayscale(80%);
+}
+
 .py-section-v-space {
   padding-top: var(--spacing-section-v-space-mobile);
   padding-bottom: var(--spacing-section-v-space-mobile);

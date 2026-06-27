@@ -159,7 +159,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'Sanity CMS'],
     imageUrl: heroMk,
     imageAlt: 'DJ Merge Konflict Website Project',
-    slug: '/case-study/mergekonflict',
+    slug: '/case-study/mergekonflict-1',
     caseStudy: {
       subtitle:
         'is a personal brand website for a electronic music DJ, featuring an upcoming shows calendar, a custom SoundCloud audio player, and a spam-free contact form.',
@@ -219,7 +219,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'Sanity CMS'],
     imageUrl: heroMk,
     imageAlt: 'DJ Merge Konflict Website Project',
-    slug: '/case-study/mergekonflict',
+    slug: '/case-study/mergekonflict-2',
     caseStudy: {
       subtitle:
         'is a personal brand website for a electronic music DJ, featuring an upcoming shows calendar, a custom SoundCloud audio player, and a spam-free contact form.',
