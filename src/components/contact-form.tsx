@@ -118,11 +118,11 @@ export function ContactForm() {
 
   useEffect(() => {
     if (state.success) {
-      toast("You're on the list!", {
+      toast('Message sent!', {
         description: 'Thanks for reaching out. I typically respond within 48 hours.',
         icon: (
-          <div className="rounded-full bg-[#181613]/10 p-1">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#181613" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <div className="rounded-full bg-[#181613] p-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff8f1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </div>
@@ -237,13 +237,18 @@ export function ContactForm() {
         position="bottom-right"
         toastOptions={{
           style: {
-            background: '#fff',
+            background: '#fff8f1',
             border: '1px solid #cdc5bc',
             color: '#181613',
             borderRadius: '8px',
-            padding: '16px',
+            padding: '14px 18px',
             fontFamily: 'Inter, sans-serif',
-            boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+            fontSize: '14px',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+          },
+          classNames: {
+            title: 'text-sm font-semibold text-[#181613]',
+            description: 'text-sm text-[#4b463f] mt-1',
           },
         }}
         duration={5000}
