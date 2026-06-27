@@ -121,8 +121,8 @@ export function ContactForm() {
       toast('Message sent!', {
         description: 'Thanks for reaching out. I typically respond within 48 hours.',
         icon: (
-          <div className="rounded-full bg-[#181613] p-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff8f1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <div className="rounded-full bg-text-primary p-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-surface)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </div>
@@ -237,18 +237,17 @@ export function ContactForm() {
         position="bottom-right"
         toastOptions={{
           style: {
-            background: '#fff8f1',
-            border: '1px solid #cdc5bc',
-            color: '#181613',
-            borderRadius: '8px',
-            padding: '14px 18px',
+            background: 'var(--color-surface)',
+            border: '1px solid var(--color-border-muted)',
+            color: 'var(--color-text-primary)',
+            borderRadius: '0.5rem',
+            padding: '0.875rem 1.125rem',
             fontFamily: 'Inter, sans-serif',
-            fontSize: '14px',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+            fontSize: '0.875rem',
           },
           classNames: {
-            title: 'text-sm font-semibold text-[#181613]',
-            description: 'text-sm text-[#4b463f] mt-1',
+            title: 'text-sm font-semibold text-text-primary',
+            description: 'text-sm text-text-secondary mt-1',
           },
         }}
         duration={5000}
