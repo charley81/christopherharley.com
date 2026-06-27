@@ -1,7 +1,8 @@
 'use client'
 
-import { useActionState, useRef } from 'react'
-import { ArrowRight, CheckCircle } from 'lucide-react'
+import { useActionState, useEffect, useRef } from 'react'
+import { toast, Toaster } from 'sonner'
+import { ArrowRight } from 'lucide-react'
 
 import { Button } from './ui/button'
 import { Field, FieldGroup, FieldLabel, FieldError } from './ui/field'
@@ -115,30 +116,24 @@ export function ContactForm() {
   )
   const formRef = useRef<HTMLFormElement>(null)
 
-  if (state.success) {
-    return (
-      <div className="flex flex-col items-center justify-center text-center py-16 space-y-4">
-        <div className="rounded-full bg-surface-container-high p-4">
-          <CheckCircle className="w-8 h-8 text-text-primary" />
-        </div>
-        <h2 className="font-headline-md text-headline-md text-text-primary">
-          Message sent!
-        </h2>
-        <p className="font-body-md text-body-md text-text-secondary max-w-sm">
-          Thanks for reaching out. I'll get back to you within 48 hours.
-        </p>
-        <Button
-          variant="outline"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        >
-          Send another
-        </Button>
-      </div>
-    )
-  }
+  useEffect(() => {
+    if (state.success) {
+      toast("You're on the list!", {
+        description: 'Thanks for reaching out. I typically respond within 48 hours.',
+        icon: (
+          <div className="rounded-full bg-[#181613]/10 p-1">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#181613" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+        ),
+      })
+    }
+  }, [state.success])
 
   return (
-    <form ref={formRef} action={formAction} className="space-y-8" noValidate>
+    <>
+      <form ref={formRef} action={formAction} className="space-y-8" noValidate>
       <input type="hidden" name="form-name" value="contact" />
 
       <FieldGroup>
@@ -237,5 +232,22 @@ export function ContactForm() {
         </Button>
       </div>
     </form>
+
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: '#fff',
+            border: '1px solid #cdc5bc',
+            color: '#181613',
+            borderRadius: '8px',
+            padding: '16px',
+            fontFamily: 'Inter, sans-serif',
+            boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+          },
+        }}
+        duration={5000}
+      />
+    </>
   )
 }
