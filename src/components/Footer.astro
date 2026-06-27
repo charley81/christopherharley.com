@@ -1,4 +1,6 @@
 ---
+import { navLinks } from '../data/navigation'
+
 export interface Props {
   /** 'default' uses bg-background, 'case-study' uses bg-surface-container-low */
   variant?: 'default' | 'case-study'
@@ -15,22 +17,20 @@ const bgClass =
   <div
     class="flex flex-col md:flex-row justify-between items-center px-edge-padding max-w-max-width mx-auto gap-4"
   >
-    <span class="font-label-mono text-[12px] text-text-secondary">
+    <span class="font-label-mono text-label-mono text-text-secondary">
       @2026 Christopher Harley
     </span>
     <div class="flex gap-8">
-      <a
-        href="/about"
-        class="font-caption text-[14px] text-text-secondary hover:text-text-primary transition-colors"
-      >
-        About
-      </a>
-      <a
-        href="/contact"
-        class="font-caption text-[14px] text-text-secondary hover:text-text-primary transition-colors"
-      >
-        Contact
-      </a>
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="font-caption text-caption text-text-secondary hover:text-text-primary transition-colors"
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </div>
   </div>
 </footer>

@@ -46,7 +46,7 @@ const FieldDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn('text-[0.8rem] text-text-secondary', className)}
+    className={cn('text-label-mono text-text-secondary', className)}
     {...props}
   />
 ))
@@ -58,7 +58,7 @@ const FieldError = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn('text-[0.8rem] font-medium text-error', className)}
+    className={cn('text-label-mono font-medium text-error', className)}
     {...props}
   >
     {children}

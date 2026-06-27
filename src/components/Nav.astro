@@ -1,4 +1,6 @@
 ---
+import { navLinks } from '../data/navigation'
+
 export interface Props {
   /** 'default' uses bg-background, 'case-study' uses bg-background/80 with backdrop-blur */
   variant?: 'default' | 'case-study'
@@ -24,18 +26,16 @@ const containerClass =
       Christopher Harley
     </a>
     <div class="flex items-center gap-8">
-      <a
-        href="/about"
-        class="text-text-secondary hover:text-text-primary transition-colors text-[14px] font-medium uppercase tracking-wider"
-      >
-        About
-      </a>
-      <a
-        href="/contact"
-        class="text-text-secondary hover:text-text-primary transition-colors text-[14px] font-medium uppercase tracking-wider"
-      >
-        Contact
-      </a>
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-text-secondary hover:text-text-primary transition-colors text-caption font-medium uppercase tracking-wider"
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </div>
   </div>
 </nav>
