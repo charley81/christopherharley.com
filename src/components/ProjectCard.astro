@@ -8,12 +8,13 @@ export interface Props {
 const { project } = Astro.props
 ---
 
-<article
-  class="relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted"
+<a
+  href={project.slug}
+  class="block relative group cursor-pointer overflow-hidden aspect-[16/9] bg-surface-subtle border border-border-muted"
 >
   <img
     alt={project.imageAlt}
-    class="w-full h-full object-cover grayscale-filter group-hover:scale-105 transition-transform duration-700 ease-out"
+    class="w-full h-full object-cover grayscale-filter group-hover:scale-105"
     src={project.imageUrl}
   />
   <div
@@ -22,13 +23,10 @@ const { project } = Astro.props
     <h3 class="font-headline-md text-headline-md text-white mb-2">
       {project.title}
     </h3>
-    <a
-      href={project.slug}
-      class="text-white font-label-mono text-label-mono mb-4 flex items-center gap-2 hover:underline"
-    >
+    <span class="text-white font-label-mono text-label-mono mb-4 flex items-center gap-2 group-hover:underline">
       Read Case Study
-      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-    </a>
+      <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+    </span>
     <div class="flex gap-2">
       {
         project.tags.map((tag) => (
@@ -39,4 +37,4 @@ const { project } = Astro.props
       }
     </div>
   </div>
-</article>
+</a>
