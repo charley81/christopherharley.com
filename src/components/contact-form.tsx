@@ -1,7 +1,7 @@
 'use client'
 
 import { useActionState, useEffect, useRef } from 'react'
-import { toast, Toaster } from 'sonner'
+import { toast } from 'sonner'
 import { ArrowRight } from 'lucide-react'
 
 import { Button } from './ui/button'
@@ -118,11 +118,11 @@ export function ContactForm() {
 
   useEffect(() => {
     if (state.success) {
-      toast("You're on the list!", {
+      toast('Message sent!', {
         description: 'Thanks for reaching out. I typically respond within 48 hours.',
         icon: (
-          <div className="rounded-full bg-[#181613]/10 p-1">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#181613" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <div className="rounded-full bg-text-primary p-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-surface)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </div>
@@ -132,8 +132,7 @@ export function ContactForm() {
   }, [state.success])
 
   return (
-    <>
-      <form ref={formRef} action={formAction} className="space-y-8" noValidate>
+    <form ref={formRef} action={formAction} className="space-y-8" noValidate>
       <input type="hidden" name="form-name" value="contact" />
 
       <FieldGroup>
@@ -220,7 +219,7 @@ export function ContactForm() {
       </FieldGroup>
 
       {state.serverError && (
-        <p className="text-[0.8rem] font-medium text-error">
+        <p className="text-label-mono font-medium text-error">
           {state.serverError}
         </p>
       )}
@@ -232,22 +231,5 @@ export function ContactForm() {
         </Button>
       </div>
     </form>
-
-      <Toaster
-        position="bottom-right"
-        toastOptions={{
-          style: {
-            background: '#fff',
-            border: '1px solid #cdc5bc',
-            color: '#181613',
-            borderRadius: '8px',
-            padding: '16px',
-            fontFamily: 'Inter, sans-serif',
-            boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
-          },
-        }}
-        duration={5000}
-      />
-    </>
   )
 }

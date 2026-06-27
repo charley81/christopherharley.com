@@ -2,9 +2,7 @@
 export const prerender = true
 
 import { Image } from 'astro:assets'
-import '../../styles/global.css'
-import Nav from '../../components/Nav.astro'
-import Footer from '../../components/Footer.astro'
+import Layout from '../../layouts/Layout.astro'
 import { projects, type Project } from '../../data/projects'
 
 export function getStaticPaths() {
@@ -25,306 +23,290 @@ const nextProject =
   currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
 ---
 
-<style is:global>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
-
-<html class="light" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>{project.title} Case Study | Christopher Harley</title>
-    <meta name="description" content={cs.subtitle} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  </head>
-  <body
-    class="bg-surface text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary selection:text-on-primary"
-  >
-    <Nav variant="case-study" />
-
-    <main class="mt-24 grow">
-      <!-- Hero Section -->
-      <section class="max-w-max-width mx-auto px-edge-padding pt-24 pb-12">
-        <div class="flex flex-col gap-6 mb-12">
-          <h1 class="font-display-lg text-display-lg text-on-surface max-w-2xl">
-            {project.title}
-          </h1>
-          <p
-            class="font-body-md text-body-md text-on-surface-variant max-w-xl leading-relaxed"
-          >
-            <a
-              class="font-semibold underline decoration-outline-variant underline-offset-4 hover:decoration-primary transition-all"
-              href={cs.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {new URL(cs.projectUrl).hostname}
-            </a>
-            {cs.subtitle}
-          </p>
-        </div>
-
-        <div
-          class="w-full aspect-video bg-surface-container overflow-hidden rounded-lg border border-outline-variant"
+<Layout
+  title={`${project.title} Case Study | Christopher Harley`}
+  description={cs.subtitle}
+  navVariant="case-study"
+  footerVariant="case-study"
+>
+  <main class="grow">
+    <!-- Hero Section -->
+    <section class="max-w-max-width mx-auto px-edge-padding pt-24 pb-12">
+      <div class="flex flex-col gap-6 mb-12">
+        <h1 class="font-display-lg text-display-lg text-text-primary max-w-2xl">
+          {project.title}
+        </h1>
+        <p
+          class="font-body-md text-body-md text-text-secondary max-w-xl leading-relaxed"
         >
-          <Image
-            alt={cs.heroImageAlt}
-            class="w-full h-full object-cover"
-            src={cs.heroImage}
-            width={1920}
-            height={1080}
-          />
-        </div>
-      </section>
+          <a
+            class="font-semibold underline decoration-outline-variant underline-offset-4 hover:decoration-text-primary transition-all"
+            href={cs.projectUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {new URL(cs.projectUrl).hostname}
+          </a>
+          {cs.subtitle}
+        </p>
+      </div>
 
-      <!-- Project Metadata Grid -->
-      <section class="max-w-max-width mx-auto px-edge-padding pb-12">
-        <div class="border-t border-outline-variant pt-8">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            <!-- Industry -->
-            <div class="flex flex-col gap-1">
-              <span
-                class="font-label-mono text-label-mono uppercase tracking-wider text-on-surface-variant"
-              >
-                Industry
-              </span>
-              <p class="font-body-md text-body-md text-on-surface">
-                {cs.industry}
-              </p>
-            </div>
+      <div
+        class="w-full aspect-video bg-surface-container overflow-hidden rounded-lg border border-outline-variant"
+      >
+        <Image
+          alt={cs.heroImageAlt}
+          class="w-full h-full object-cover"
+          src={cs.heroImage}
+          width={1920}
+          height={1080}
+        />
+      </div>
+    </section>
 
-            <!-- Category -->
-            <div class="flex flex-col gap-1">
-              <span
-                class="font-label-mono text-label-mono uppercase tracking-wider text-on-surface-variant"
-              >
-                Category
-              </span>
+    <!-- Project Metadata Grid -->
+    <section class="max-w-max-width mx-auto px-edge-padding pb-12">
+      <div class="border-t border-outline-variant pt-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          <!-- Industry -->
+          <div class="flex flex-col gap-1">
+            <span
+              class="font-label-mono text-label-mono uppercase tracking-wider text-text-secondary"
+            >
+              Industry
+            </span>
+            <p class="font-body-md text-body-md text-text-primary">
+              {cs.industry}
+            </p>
+          </div>
+
+          <!-- Category -->
+          <div class="flex flex-col gap-1">
+            <span
+              class="font-label-mono text-label-mono uppercase tracking-wider text-text-secondary"
+            >
+              Category
+            </span>
+            {
+              cs.category.map((cat) => (
+                <div class="font-body-md text-body-md text-text-primary">
+                  {cat}
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="flex flex-col gap-1">
+            <span
+              class="font-label-mono text-label-mono uppercase tracking-wider text-text-secondary"
+            >
+              Tech Stack
+            </span>
+            <ul class="flex flex-col gap-1">
               {
-                cs.category.map((cat) => (
-                  <div class="font-body-md text-body-md text-on-surface">
-                    {cat}
-                  </div>
+                cs.techStack.map((tech) => (
+                  <li class="font-body-md text-body-md text-text-primary">
+                    {tech}
+                  </li>
                 ))
               }
-            </div>
-
-            <!-- Tech Stack -->
-            <div class="flex flex-col gap-1">
-              <span
-                class="font-label-mono text-label-mono uppercase tracking-wider text-on-surface-variant"
-              >
-                Tech Stack
-              </span>
-              <ul class="flex flex-col gap-1">
-                {
-                  cs.techStack.map((tech) => (
-                    <li class="font-body-md text-body-md text-on-surface">
-                      {tech}
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-
-            <!-- Live Site -->
-            <div class="flex lg:justify-end items-start">
-              <a
-                class="inline-flex items-center gap-2 group hover:text-primary transition-colors text-on-surface font-bold"
-                href={cs.liveLink}
-                target="_blank"
-              >
-                <span
-                  class="font-label-mono text-label-mono uppercase tracking-widest"
-                >
-                  Visit Live Site
-                </span>
-                <span
-                  class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1"
-                >
-                  arrow_outward
-                </span>
-              </a>
-            </div>
+            </ul>
           </div>
-        </div>
-      </section>
 
-      <!-- Introduction Section (Dark) -->
-      <section class="bg-primary text-on-primary py-section-v-space">
-        <div class="max-w-max-width mx-auto px-edge-padding">
-          <div class="max-w-3xl flex flex-col gap-6">
-            <span
-              class="font-label-mono text-label-mono text-on-primary/60 uppercase tracking-widest"
+          <!-- Live Site -->
+          <div class="flex lg:justify-end items-start">
+            <a
+              class="inline-flex items-center gap-2 group hover:text-text-primary transition-colors text-text-primary font-bold"
+              href={cs.liveLink}
+              target="_blank"
             >
-              {cs.introduction.label}
-            </span>
-            <div class="flex flex-col gap-8">
-              <h2
-                class="font-display-lg text-display-lg italic leading-tight tracking-tight text-on-primary"
+              <span
+                class="font-label-mono text-label-mono uppercase tracking-widest"
               >
-                {cs.introduction.heading}
-              </h2>
-              <p
-                class="font-body-md text-body-md leading-relaxed text-on-primary/80"
+                Visit Live Site
+              </span>
+              <span
+                class="material-symbols-outlined text-body-md transition-transform group-hover:translate-x-1"
               >
-                {cs.introduction.body}
-              </p>
-            </div>
+                arrow_outward
+              </span>
+            </a>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- About The Design Section -->
-      <section
-        class="py-section-v-space px-edge-padding max-w-max-width mx-auto"
-      >
-        <div class="max-w-3xl flex flex-col gap-6 mb-12">
+    <!-- Introduction Section (Dark) -->
+    <section class="bg-text-primary text-white py-section-v-space">
+      <div class="max-w-max-width mx-auto px-edge-padding">
+        <div class="max-w-3xl flex flex-col gap-6">
           <span
-            class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest"
+            class="font-label-mono text-label-mono text-white/60 uppercase tracking-widest"
           >
-            About the Design
+            {cs.introduction.label}
           </span>
-          <p
-            class="font-body-md text-body-md text-on-surface-variant leading-relaxed"
-          >
-            {cs.design.description}
-          </p>
-        </div>
-
-        <!-- Bento Grid Gallery (2x2) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-          {
-            cs.design.images.map((img) => (
-              <div class="bg-surface-container overflow-hidden rounded-lg border border-outline-variant">
-                <Image
-                  alt={img.alt}
-                  class="w-full"
-                  src={img.src}
-                  width={Math.min(img.src.width, 1200)}
-                  height={Math.round(Math.min(img.src.width, 1200) * img.src.height / img.src.width)}
-                />
-              </div>
-            ))
-          }
-        </div>
-      </section>
-
-      <!-- Development Section -->
-      <section class="bg-surface-container-low py-section-v-space">
-        <div class="max-w-max-width mx-auto px-edge-padding">
-          <h2 class="font-headline-md text-headline-md text-on-surface mb-8">
-            Development
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-            <div class="md:col-span-12">
-              <p
-                class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-3xl"
-              >
-                {cs.development.body}
-              </p>
-            </div>
+          <div class="flex flex-col gap-8">
+            <h2
+              class="font-display-lg text-display-lg italic leading-tight tracking-tight text-white"
+            >
+              {cs.introduction.heading}
+            </h2>
+            <p
+              class="font-body-md text-body-md leading-relaxed text-white/80"
+            >
+              {cs.introduction.body}
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Conclusion Section -->
-      <section
-        class="py-section-v-space px-edge-padding max-w-max-width mx-auto text-center"
-      >
-        <div class="max-w-3xl mx-auto flex flex-col gap-6">
-          <h2
-            class="font-display-lg text-display-lg italic leading-tight text-on-surface"
-          >
-            {cs.conclusion.quote}
-          </h2>
-          <p
-            class="font-body-md text-body-md text-on-surface-variant leading-relaxed"
-          >
-            {cs.conclusion.body}
-          </p>
-        </div>
-      </section>
+    <!-- About The Design Section -->
+    <section
+      class="py-section-v-space px-edge-padding max-w-max-width mx-auto"
+    >
+      <div class="max-w-3xl flex flex-col gap-6 mb-12">
+        <span
+          class="font-label-mono text-label-mono text-text-secondary uppercase tracking-widest"
+        >
+          About the Design
+        </span>
+        <p
+          class="font-body-md text-body-md text-text-secondary leading-relaxed"
+        >
+          {cs.design.description}
+        </p>
+      </div>
 
-      <!-- Prev / Next Navigation -->
-      <section class="max-w-max-width mx-auto px-edge-padding pb-16">
-        <div class="flex items-center gap-8 justify-center">
-          {
-            prevProject ? (
-              <a
-                class="group flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors"
-                href={prevProject.slug}
-              >
-                <span class="material-symbols-outlined text-[16px] group-hover:-translate-x-0.5 transition-transform">
-                  west
-                </span>
-                <span class="font-label-mono text-label-mono uppercase tracking-widest">
-                  Prev Project
-                </span>
-              </a>
-            ) : (
-              <span class="flex items-center gap-2 text-on-surface-variant/30">
-                <span class="material-symbols-outlined text-[16px]">west</span>
-                <span class="font-label-mono text-label-mono uppercase tracking-widest">
-                  Prev Project
-                </span>
-              </span>
-            )
-          }
-          <div class="h-4 w-px bg-outline-variant"></div>
-          {
-            nextProject ? (
-              <a
-                class="group flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors"
-                href={nextProject.slug}
-              >
-                <span class="font-label-mono text-label-mono uppercase tracking-widest">
-                  Next Project
-                </span>
-                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">
-                  east
-                </span>
-              </a>
-            ) : (
-              <span class="flex items-center gap-2 text-on-surface-variant/30">
-                <span class="font-label-mono text-label-mono uppercase tracking-widest">
-                  Next Project
-                </span>
-                <span class="material-symbols-outlined text-[16px]">east</span>
-              </span>
-            )
-          }
-        </div>
-      </section>
-    </main>
-
-    <Footer variant="case-study" />
-
-    <script>
-      const observerOptions = { threshold: 0.1 }
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100', 'translate-y-0')
-            entry.target.classList.remove('opacity-0', 'translate-y-4')
-          }
-        })
-      }, observerOptions)
-
-      document.querySelectorAll('section').forEach((section) => {
-        if (!section.closest('nav, footer')) {
-          section.classList.add(
-            'transition-all',
-            'duration-700',
-            'ease-out',
-            'opacity-0',
-            'translate-y-4',
-          )
-          observer.observe(section)
+      <!-- Bento Grid Gallery (2x2) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+        {
+          cs.design.images.map((img) => (
+            <div class="bg-surface-container overflow-hidden rounded-lg border border-outline-variant">
+              <Image
+                alt={img.alt}
+                class="w-full"
+                src={img.src}
+                width={Math.min(img.src.width, 1200)}
+                height={Math.round(Math.min(img.src.width, 1200) * img.src.height / img.src.width)}
+              />
+            </div>
+          ))
         }
-      })
-    </script>
-  </body>
-</html>
+      </div>
+    </section>
+
+    <!-- Development Section -->
+    <section class="bg-surface-container-low py-section-v-space">
+      <div class="max-w-max-width mx-auto px-edge-padding">
+        <h2 class="font-headline-md text-headline-md text-text-primary mb-8">
+          Development
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <div class="md:col-span-12">
+            <p
+              class="font-body-md text-body-md text-text-secondary leading-relaxed max-w-3xl"
+            >
+              {cs.development.body}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section
+      class="py-section-v-space px-edge-padding max-w-max-width mx-auto text-center"
+    >
+      <div class="max-w-3xl mx-auto flex flex-col gap-6">
+        <h2
+          class="font-display-lg text-display-lg italic leading-tight text-text-primary"
+        >
+          {cs.conclusion.quote}
+        </h2>
+        <p
+          class="font-body-md text-body-md text-text-secondary leading-relaxed"
+        >
+          {cs.conclusion.body}
+        </p>
+      </div>
+    </section>
+
+    <!-- Prev / Next Navigation -->
+    <section class="max-w-max-width mx-auto px-edge-padding pb-16">
+      <nav class="flex items-center gap-8 justify-center" aria-label="Project navigation">
+        {
+          prevProject ? (
+            <a
+              class="group flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors"
+              href={prevProject.slug}
+            >
+              <span class="material-symbols-outlined text-body-md group-hover:-translate-x-0.5 transition-transform">
+                west
+              </span>
+              <span class="font-label-mono text-label-mono uppercase tracking-widest">
+                Prev Project
+              </span>
+            </a>
+          ) : (
+            <span class="flex items-center gap-2 text-text-secondary/30">
+              <span class="material-symbols-outlined text-body-md">west</span>
+              <span class="font-label-mono text-label-mono uppercase tracking-widest">
+                Prev Project
+              </span>
+            </span>
+          )
+        }
+        <div class="h-4 w-px bg-outline-variant" aria-hidden="true"></div>
+        {
+          nextProject ? (
+            <a
+              class="group flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors"
+              href={nextProject.slug}
+            >
+              <span class="font-label-mono text-label-mono uppercase tracking-widest">
+                Next Project
+              </span>
+              <span class="material-symbols-outlined text-body-md group-hover:translate-x-0.5 transition-transform">
+                east
+              </span>
+            </a>
+          ) : (
+            <span class="flex items-center gap-2 text-text-secondary/30">
+              <span class="font-label-mono text-label-mono uppercase tracking-widest">
+                Next Project
+              </span>
+              <span class="material-symbols-outlined text-body-md">east</span>
+            </span>
+          )
+        }
+      </nav>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  const observerOptions = { threshold: 0.1 }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('opacity-100', 'translate-y-0')
+        entry.target.classList.remove('opacity-0', 'translate-y-4')
+      }
+    })
+  }, observerOptions)
+
+  document.querySelectorAll('section').forEach((section) => {
+    if (!section.closest('nav, footer')) {
+      section.classList.add(
+        'transition-all',
+        'duration-700',
+        'ease-out',
+        'opacity-0',
+        'translate-y-4',
+      )
+      observer.observe(section)
+    }
+  })
+</script>

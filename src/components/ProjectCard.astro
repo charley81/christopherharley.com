@@ -21,7 +21,7 @@ const { project } = Astro.props
     height={1080}
   />
   <div
-    class="absolute inset-0 bg-linear-to-t from-[#181613]/90 via-[#181613]/30 to-transparent flex flex-col justify-end p-gutter"
+    class="absolute inset-0 bg-linear-to-t from-text-primary/90 via-text-primary/30 to-transparent flex flex-col justify-end p-gutter"
   >
     <h3 class="font-headline-md text-headline-md text-white mb-2">
       {project.title}
@@ -31,7 +31,7 @@ const { project } = Astro.props
     >
       <span class="group-hover:underline">Read Case Study</span>
       <span
-        class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform"
+        class="material-symbols-outlined text-body-md group-hover:translate-x-1 transition-transform"
         >arrow_forward</span
       >
     </span>

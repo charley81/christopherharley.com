@@ -94,6 +94,10 @@
   --text-caption--font-weight: 400;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-text-primary);
