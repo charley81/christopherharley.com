@@ -10,6 +10,12 @@ import wlImg2 from '../images/wl-case-study/img2.png'
 import wlImg3 from '../images/wl-case-study/img3.png'
 import wlImg4 from '../images/wl-case-study/img4.png'
 
+import heroBS from '../images/bs-case-study/hero-img.png'
+import bsImg1 from '../images/bs-case-study/img1.png'
+import bsImg2 from '../images/bs-case-study/img2.png'
+import bsImg3 from '../images/bs-case-study/img3.png'
+import bsImg4 from '../images/bs-case-study/img4.png'
+
 import type { ImageMetadata } from 'astro'
 
 export interface Project {
@@ -41,7 +47,7 @@ export interface CaseStudyContent {
     images: Array<{ src: ImageMetadata; alt: string }>
   }
   development: {
-    body: string
+    body: string[]
   }
   conclusion: {
     quote: string
@@ -64,7 +70,7 @@ function cs(
     introBody: string
     designDescription: string
     designImages: Array<{ src: ImageMetadata; alt: string }>
-    devBody: string
+    devBody: string[]
     conclusionQuote: string
     conclusionBody: string
   },
@@ -150,7 +156,9 @@ export const projects: Project[] = [
         ],
       },
       development: {
-        body: "The site was built on Next.js 16 with React Server Components handling all data-fetching sections, reserving Client Components only where browser interactivity is required — the SoundCloud player, contact form, and theme toggle. Sanity CMS powers every piece of content through an embedded Studio at /studio, with three document types covering shows, site settings, and contact submissions; a webhook triggers on-demand ISR so published changes appear on the live site within seconds. The most stubborn challenge came from SoundCloud's 2025 API migration: the embedded player no longer accepted the new URN-based playlist identifiers, requiring a workaround that extracts the legacy numeric ID, stores it as a CMS field, and constructs the embed URL dynamically. A similar debugging effort resolved a production crash caused by a null image reference after adding a new schema field, and a field-name mismatch between the contact form's Server Action and client component was aligned to restore end-to-end submission flow.",
+        body: [
+          "The site was built on Next.js 16 with React Server Components handling all data-fetching sections, reserving Client Components only where browser interactivity is required — the SoundCloud player, contact form, and theme toggle. Sanity CMS powers every piece of content through an embedded Studio at /studio, with three document types covering shows, site settings, and contact submissions; a webhook triggers on-demand ISR so published changes appear on the live site within seconds. The most stubborn challenge came from SoundCloud's 2025 API migration: the embedded player no longer accepted the new URN-based playlist identifiers, requiring a workaround that extracts the legacy numeric ID, stores it as a CMS field, and constructs the embed URL dynamically. A similar debugging effort resolved a production crash caused by a null image reference after adding a new schema field, and a field-name mismatch between the contact form's Server Action and client component was aligned to restore end-to-end submission flow.",
+        ],
       },
       conclusion: {
         quote: '"A Website as Good as the Music"',
@@ -204,11 +212,80 @@ export const projects: Project[] = [
         ],
       },
       development: {
-        body: "The site was built on Astro paired with Tailwind CSS to ensure near-instant page loads, with critical CSS inlined and zero client-side JavaScript shipped by default. Sanity CMS powers every piece of content through an embedded Studio, with three document types covering services, testimonials, and site settings; a webhook triggers on-demand rebuilds on Netlify so published changes appear on the live site within seconds. Netlify Forms handles all \"Get Free Estimate\" submissions, forwarding them directly to the team's work email without requiring a separate backend. The most stubborn challenge came from integrating Sanity CMS and configuring the build hooks to ensure seamless live updates in production — achieving zero-disruption deployments while avoiding stale data required meticulous configuration of Sanity's webhooks with Netlify's build triggers. A similar debugging effort resolved a production crash caused by a missing image reference in a new schema field, which was patched by adding proper fallback handling in the Astro components.",
+        body: [
+          "The site was built on Astro paired with Tailwind CSS to ensure near-instant page loads, with critical CSS inlined and zero client-side JavaScript shipped by default. Sanity CMS powers every piece of content through an embedded Studio, with three document types covering services, testimonials, and site settings; a webhook triggers on-demand rebuilds on Netlify so published changes appear on the live site within seconds. Netlify Forms handles all \"Get Free Estimate\" submissions, forwarding them directly to the team's work email without requiring a separate backend. The most stubborn challenge came from integrating Sanity CMS and configuring the build hooks to ensure seamless live updates in production — achieving zero-disruption deployments while avoiding stale data required meticulous configuration of Sanity's webhooks with Netlify's build triggers. A similar debugging effort resolved a production crash caused by a missing image reference in a new schema field, which was patched by adding proper fallback handling in the Astro components.",
+        ],
       },
       conclusion: {
         quote: '"A Website as Good as the Lawn Care"',
         body: 'The site launched with near-perfect Lighthouse scores across Performance, Accessibility, Best Practices, and SEO — a major improvement from the initial poor metrics. Grant now has a professional digital asset that actively works for his business 24/7, generating leads and instilling confidence in potential customers before they ever pick up the phone. He loves that he can make updates to the site himself anytime he wants and has been getting significantly more business inquiries since the site went live. The project successfully transformed a social-media-only operation into a polished, lead-generating machine that truly represents the quality of their work.',
+      },
+    },
+  },
+  {
+    title: 'BASSMENT',
+    description:
+      'A design-driven website and ticketing platform for an underground Drum & Bass venue in Manhattan.',
+    tags: ['Next.js', 'Sanity CMS', 'Stripe'],
+    imageUrl: heroBS,
+    imageAlt: 'BASSMENT Website Project',
+    slug: '/case-study/bassment',
+    caseStudy: {
+      subtitle:
+        'is a high-fidelity, design-driven website for a fictional world-class Drum & Bass venue located four stories beneath 70 Pine Street, Manhattan — a full digital storefront with a fully integrated Stripe ticket checkout.',
+      projectUrl: 'https://clubbassment.com',
+      heroImage: heroBS,
+      heroImageAlt: 'BASSMENT website hero mockup',
+      industry: 'Music / Nightlife / Live Events',
+      category: ['Web Design', 'UX/UI', 'Full-Stack Development'],
+      techStack: [
+        'Next.js 16',
+        'TypeScript',
+        'Tailwind CSS v4',
+        'shadcn/ui',
+        'Sanity CMS',
+        'Framer Motion',
+        'Stripe',
+        'Netlify',
+        'Vitest',
+        'Google Maps API',
+      ],
+      liveLink: 'https://clubbassment.com',
+      introduction: {
+        label: 'Introduction',
+        heading: 'The making of the new BASSMENT website',
+        body: "The brief was ambitious: build the digital home for a venue that doesn't exist, but needs to feel like it does. BASSMENT isn't just a club — it's a 96,000-watt analog sound system buried under Wall Street, a haven for junglists and bass purists. The website had to capture that industrial, underground identity while staying fast, content-editable, and laser-focused on its primary goal: selling tickets. The constraints were real. Content needed to be fully manageable by non-technical venue staff through Sanity CMS. Any content change — a new event, an updated FAQ — had to appear on the live site instantly, not after a developer deploy. The design had to feel brutalist and authentic to the Drum & Bass scene while remaining accessible and responsive. And the entire codebase needed to stay lean enough for a single developer to own end-to-end.",
+      },
+      design: {
+        description:
+          "The visual language is unapologetically industrial: JetBrains Mono across every heading and body, a near-black background (#090102), and a single primary red (#D31F28) as the accent. There are no gradients, no soft shadows, no rounded corners (save for a deliberate 8px radius on cards and images — the one concession to modern UI softness). The design draws from brutalist architecture, club flyer typography, and the physicality of the Valve Sound System itself: graticule hairlines, red waveform motifs, and a monospace editorial rhythm that runs from the hero down to the footer. The brand's red accent is used sparingly — a thin border here, a hover state there, a sliding red bar on the resident DJ slider. Every element earns its place. The result is a site that feels as much like a physical space as the venue it represents: dark, loud, and intentional.",
+        images: [
+          {
+            src: bsImg1,
+            alt: 'BASSMENT event detail page with flyer artwork and ticket CTA',
+          },
+          {
+            src: bsImg2,
+            alt: 'BASSMENT ticket checkout with embedded Stripe payment element',
+          },
+          {
+            src: bsImg3,
+            alt: 'BASSMENT homepage with resident DJ slider and event flyer grid',
+          },
+          {
+            src: bsImg4,
+            alt: 'BASSMENT venue page with branded greyscale map and red marker',
+          },
+        ],
+      },
+      development: {
+        body: [
+          "The site is built on Next.js 16 with the App Router — data-fetching pages in server components, interactivity (DJ slider, tabs, contact form) in client components, all under TypeScript strict mode. Every piece of content lives in Sanity CMS: 17 events, 6 resident artists, FAQs, venue details, and a gallery, each modeled with validation rules. Publishing a change triggers a Netlify webhook → revalidation pipeline that purges the CDN and serves fresh pages within seconds — hardened with a content-signature guard and an automated purge token. Each event carries AI-generated poster artwork hosted directly in Sanity, uploaded through the embedded Studio and served on event cards, detail pages, and the home page featured panel. The signature details were built from scratch: a framer-motion DJ slider with preloaded image stacks and directional crossfades (plus full keyboard/ARIA/reduced-motion support), and a greyscale Google Maps API upgrade where a custom red SVG pin is the only color on the map. At the center of it all is the ticket flow. Stripe Payment Element handles the full purchase journey — payment intent, email attachment, webhook, and ticket persistence in Sanity with capacity tracking and auto-sold-out — with branded emails via Resend and a self-serve resend action for ticket recovery. Reliability is verified rather than assumed: a 90-test Vitest suite covers every pure-logic path, an integration script exercises the full purchase loop, and CI runs everything on every PR. Two production bugs made the site better: stale CDN pages fixed with a site-scoped purge token, and a black-band flash in the DJ slider rebuilt as a preloaded crossfade stack.",
+        ],
+      },
+      conclusion: {
+        quote: '"A Website as Good as the Sound System Itself"',
+        body: "BASSMENT is a portfolio piece that functions as a production website. The live-updates pipeline keeps content fresh without developer intervention. The brutalist design language is unique and brand-appropriate. The animation system is tasteful and performant — scroll-safe, reduced-motion-aware, and entirely GPU-accelerated. The test suite, CI, and integration script ensure every deploy is verified. The site now serves as both a showcase of the fictional venue and a demonstration of what a single developer can build with the modern Jamstack: headless CMS content, serverless functions, edge-cached pages, and a polished, design-driven frontend — all without sacrificing speed or maintainability.",
       },
     },
   },

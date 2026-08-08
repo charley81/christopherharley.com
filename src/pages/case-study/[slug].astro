@@ -204,12 +204,16 @@ const nextProject =
           Development
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-          <div class="md:col-span-12">
-            <p
-              class="font-body-md text-body-md text-text-secondary leading-relaxed max-w-3xl"
-            >
-              {cs.development.body}
-            </p>
+          <div class="md:col-span-12 flex flex-col gap-gutter">
+            {
+              cs.development.body.map((paragraph) => (
+                <p
+                  class="font-body-md text-body-md text-text-secondary leading-relaxed max-w-3xl"
+                >
+                  {paragraph}
+                </p>
+              ))
+            }
           </div>
         </div>
       </div>
