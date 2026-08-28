@@ -16,6 +16,10 @@ export function getStaticPaths() {
 
 const { project } = Astro.props as { project: Project }
 const cs = project.caseStudy!
+const heroWidth = Math.min(cs.heroImage.width, 1920)
+const heroHeight = Math.round(
+  (heroWidth * cs.heroImage.height) / cs.heroImage.width,
+)
 
 const currentIndex = projects.findIndex((p) => p.slug === project.slug)
 const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null
@@ -46,20 +50,20 @@ const nextProject =
             rel="noopener noreferrer"
           >
             {new URL(cs.projectUrl).hostname}
-          </a>
+          </a>{' '}
           {cs.subtitle}
         </p>
       </div>
 
       <div
-        class="w-full aspect-video bg-surface-container overflow-hidden rounded-lg border border-outline-variant"
+        class="w-full bg-surface-container overflow-hidden rounded-lg border border-outline-variant"
       >
         <Image
           alt={cs.heroImageAlt}
-          class="w-full h-full object-cover"
+          class="block w-full h-auto"
           src={cs.heroImage}
-          width={1920}
-          height={1080}
+          width={heroWidth}
+          height={heroHeight}
         />
       </div>
     </section>
@@ -152,9 +156,7 @@ const nextProject =
             >
               {cs.introduction.heading}
             </h2>
-            <p
-              class="font-body-md text-body-md leading-relaxed text-white/80"
-            >
+            <p class="font-body-md text-body-md leading-relaxed text-white/80">
               {cs.introduction.body}
             </p>
           </div>
@@ -163,9 +165,7 @@ const nextProject =
     </section>
 
     <!-- About The Design Section -->
-    <section
-      class="py-section-v-space px-edge-padding max-w-max-width mx-auto"
-    >
+    <section class="py-section-v-space px-edge-padding max-w-max-width mx-auto">
       <div class="max-w-3xl flex flex-col gap-6 mb-12">
         <span
           class="font-label-mono text-label-mono text-text-secondary uppercase tracking-widest"
@@ -189,7 +189,10 @@ const nextProject =
                 class="w-full"
                 src={img.src}
                 width={Math.min(img.src.width, 1200)}
-                height={Math.round(Math.min(img.src.width, 1200) * img.src.height / img.src.width)}
+                height={Math.round(
+                  (Math.min(img.src.width, 1200) * img.src.height) /
+                    img.src.width,
+                )}
               />
             </div>
           ))
@@ -207,9 +210,7 @@ const nextProject =
           <div class="md:col-span-12 flex flex-col gap-gutter">
             {
               cs.development.body.map((paragraph) => (
-                <p
-                  class="font-body-md text-body-md text-text-secondary leading-relaxed max-w-3xl"
-                >
+                <p class="font-body-md text-body-md text-text-secondary leading-relaxed max-w-3xl">
                   {paragraph}
                 </p>
               ))
@@ -239,7 +240,10 @@ const nextProject =
 
     <!-- Prev / Next Navigation -->
     <section class="max-w-max-width mx-auto px-edge-padding pb-16">
-      <nav class="flex items-center gap-8 justify-center" aria-label="Project navigation">
+      <nav
+        class="flex items-center gap-8 justify-center"
+        aria-label="Project navigation"
+      >
         {
           prevProject ? (
             <a

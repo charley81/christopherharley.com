@@ -7,11 +7,9 @@ export const contactSchema = z.object({
     .string()
     .min(1, { message: 'Name is required' })
     .max(100, { message: 'Name is too long' }),
-  email: z
-    .string()
-    .refine((v) => emailRegex.test(v), {
-      message: 'Please enter a valid email',
-    }),
+  email: z.string().refine((v) => emailRegex.test(v), {
+    message: 'Please enter a valid email',
+  }),
   inquiry: z.enum(['agency', 'freelance', 'hi'], {
     error: 'Please select a subject',
   }),
