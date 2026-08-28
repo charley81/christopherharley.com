@@ -7,18 +7,22 @@ export interface Props {
 }
 
 const { project } = Astro.props
+const imageWidth = Math.min(project.imageUrl.width, 1920)
+const imageHeight = Math.round(
+  (imageWidth * project.imageUrl.height) / project.imageUrl.width,
+)
 ---
 
 <a
   href={project.slug}
-  class="block relative group cursor-pointer overflow-hidden aspect-video bg-surface-subtle border border-border-muted"
+  class="block relative group cursor-pointer overflow-hidden bg-surface-subtle border border-border-muted"
 >
   <Image
     alt={project.imageAlt}
-    class="w-full h-full object-cover"
+    class="block w-full h-auto"
     src={project.imageUrl}
-    width={1920}
-    height={1080}
+    width={imageWidth}
+    height={imageHeight}
   />
   <div
     class="absolute inset-0 bg-linear-to-t from-text-primary/90 via-text-primary/30 to-transparent flex flex-col justify-end p-gutter"

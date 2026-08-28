@@ -119,10 +119,20 @@ export function ContactForm() {
   useEffect(() => {
     if (state.success) {
       toast('Message sent!', {
-        description: 'Thanks for reaching out. I typically respond within 48 hours.',
+        description:
+          'Thanks for reaching out. I typically respond within 48 hours.',
         icon: (
           <div className="rounded-full bg-text-primary p-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-surface)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--color-surface)"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </div>

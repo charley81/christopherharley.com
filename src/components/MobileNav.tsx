@@ -96,7 +96,9 @@ export default function MobileNav() {
             onClick={close}
             aria-label="Close menu"
           >
-            <span className="material-symbols-outlined text-body-md">close</span>
+            <span className="material-symbols-outlined text-body-md">
+              close
+            </span>
           </button>
 
           {/* Navigation links */}

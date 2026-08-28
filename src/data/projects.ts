@@ -16,6 +16,12 @@ import bsImg2 from '../images/bs-case-study/img2.png'
 import bsImg3 from '../images/bs-case-study/img3.png'
 import bsImg4 from '../images/bs-case-study/img4.png'
 
+import heroME from '../images/me-case-study/hero-img.png'
+import meImg1 from '../images/me-case-study/img1.png'
+import meImg2 from '../images/me-case-study/img2.png'
+import meImg3 from '../images/me-case-study/img3.png'
+import meImg4 from '../images/me-case-study/img4.png'
+
 import type { ImageMetadata } from 'astro'
 
 export interface Project {
@@ -55,55 +61,86 @@ export interface CaseStudyContent {
   }
 }
 
-function cs(
-  overrides: Partial<CaseStudyContent> & {
-    title: string
-    subtitle: string
-    projectUrl: string
-    heroImage: ImageMetadata
-    heroImageAlt: string
-    industry: string
-    category: string[]
-    techStack: string[]
-    liveLink: string
-    introHeading: string
-    introBody: string
-    designDescription: string
-    designImages: Array<{ src: ImageMetadata; alt: string }>
-    devBody: string[]
-    conclusionQuote: string
-    conclusionBody: string
-  },
-): CaseStudyContent {
-  return {
-    subtitle: overrides.subtitle,
-    projectUrl: overrides.projectUrl,
-    heroImage: overrides.heroImage,
-    heroImageAlt: overrides.heroImageAlt,
-    industry: overrides.industry,
-    category: overrides.category,
-    techStack: overrides.techStack,
-    liveLink: overrides.liveLink,
-    introduction: {
-      label: overrides.introduction?.label ?? 'Introduction',
-      heading: overrides.introHeading,
-      body: overrides.introBody,
-    },
-    design: {
-      description: overrides.designDescription,
-      images: overrides.designImages,
-    },
-    development: {
-      body: overrides.devBody,
-    },
-    conclusion: {
-      quote: overrides.conclusionQuote,
-      body: overrides.conclusionBody,
-    },
-  }
-}
-
 export const projects: Project[] = [
+  {
+    title: 'Marsh & Ember',
+    description:
+      'An editorial restaurant website shaped by live-fire cooking, Lowcountry hospitality, and accessible guest journeys.',
+    tags: ['Next.js', 'Sanity CMS', 'Accessibility'],
+    imageUrl: heroME,
+    imageAlt: 'Marsh & Ember restaurant website homepage',
+    slug: '/case-study/marsh-and-ember',
+    caseStudy: {
+      subtitle:
+        'is a fictional Charleston restaurant concept brought to life through an editorial website for menus, events, reservations, and private dining.',
+      projectUrl: 'https://marshandember.netlify.app',
+      heroImage: heroME,
+      heroImageAlt:
+        'Marsh & Ember desktop homepage featuring a live-fire hearth',
+      industry: 'Food & Beverage / Hospitality',
+      category: [
+        'Web Design',
+        'UX/UI',
+        'Frontend Development',
+        'CMS Architecture',
+      ],
+      techStack: [
+        'Figma',
+        'Next.js 16',
+        'React 19',
+        'TypeScript',
+        'Sanity CMS',
+        'CSS',
+        'Netlify',
+        'Vitest',
+        'Playwright',
+        'Axe',
+      ],
+      liveLink: 'https://marshandember.netlify.app',
+      introduction: {
+        label: 'Introduction',
+        heading: 'The making of the new Marsh & Ember website',
+        body: 'Marsh & Ember was created as a complete restaurant concept rather than for an existing client. The brief called for a credible Charleston dining brand with a distinct point of view: seasonal ingredients, wood-fired cooking, a strong sense of place, and hospitality that feels polished without becoming formal. The central challenge was to translate that atmosphere into a useful digital experience. Visitors needed clear paths to explore menus, plan a visit, learn the restaurant’s story, discover events, reserve standard dining, or begin a private dining inquiry. At the same time, restaurant information, menus, dietary markers, events, hours, and editorial imagery needed to remain manageable through a structured CMS instead of being scattered throughout the codebase. The project also had unusually high standards for a portfolio build. It needed to work from 320px through large desktop widths, support keyboard and assistive-technology use, account for loading and failure states, avoid layout shifts, and remain honest about its fictional transactions and customer data.',
+      },
+      design: {
+        description:
+          'The visual direction is warm, editorial, and contemporary. Large-format hospitality photography creates an immediate sense of fire, food, and place, while generous spacing gives the content a calm, premium rhythm. Deep navy anchors the interface; warm cream and parchment surfaces soften it; restrained ember accents provide emphasis without overwhelming the imagery. Typography balances character and clarity. Libre Baskerville gives headlines an expressive, restaurant-editorial voice, while Outfit keeps navigation, supporting copy, forms, and interface controls direct and readable. Desktop compositions use intentional asymmetry and wide image crops, then resolve into a clear linear reading order on mobile. The interface was organized around a focused set of reusable patterns: global navigation, action buttons, editorial split sections, menu previews, event states, accessible form fields, status messages, and a shared footer. This allowed eight public page types and their mobile counterparts to feel related without reducing every page to the same layout.',
+        images: [
+          {
+            src: meImg1,
+            alt: 'Marsh & Ember reservation preview disclosure dialog',
+          },
+          {
+            src: meImg2,
+            alt: 'Marsh & Ember fictional table reservation details dialog',
+          },
+          {
+            src: meImg3,
+            alt: 'Marsh & Ember desktop dinner menu preview',
+          },
+          {
+            src: meImg4,
+            alt: 'Marsh & Ember desktop event RSVP form',
+          },
+        ],
+      },
+      development: {
+        body: [
+          'The site was built with the Next.js App Router, React, and TypeScript. Server Components handle content-led pages, while Client Components are limited to interactions such as mobile navigation, reservation dialogs, accordions, and form previews. Responsive image art direction, declared media dimensions, deferred interactive code, and reusable page sections help control performance and layout stability.',
+          'Sanity powers restaurant settings, operating hours, menus, menu sections, dishes, dietary markers, events, event facts, courses, announcements, and editorial imagery. Typed GROQ queries, generated types, content mappers, fixture fallbacks, Draft Mode, and Presentation overlays create a preview-friendly workflow while keeping published content separate from drafts.',
+          'The public experience includes Home, Menus, Dinner, Visit, Our Story, Private Dining, Events, a reusable event-detail template, Privacy, and Accessibility pages. Reservation, private dining, and event RSVP experiences include meaningful validation, pending, error, completion, empty, closed, sold-out, cancelled, and past-event states. In the portfolio deployment, transactional interactions remain intentionally local and no-I/O, so no real booking, inquiry, or attendance confirmation is implied.',
+          'The approved Figma source contained 16 desktop and mobile high-fidelity page frames plus eight production-state boards. Shared code components captured repeated behavior and visual rules without reproducing unnecessary Figma wrapper layers, while route-specific compositions preserved the intended editorial hierarchy.',
+          'The desktop designs rely on asymmetry, generous negative space, and art-directed crops. Fluid breakpoints, mobile-specific image sources, controlled page gutters, and content-driven stacking preserved that character at tablet and mobile widths without horizontal overflow.',
+          'Mobile navigation and reservation dialogs required focus trapping, Escape behavior, scroll locking, and focus restoration. Forms use visible labels, linked validation summaries, value preservation, live status messaging, duplicate-submission protection, and language that never mistakes a request for a confirmed booking.',
+          'The connected Sanity workflow needed secure draft previews, exact CORS origins, a server-only read token, deterministic migration tooling, document validation, and typed content queries. The final setup supports visual editing while keeping unpublished content and credentials out of the public experience.',
+        ],
+      },
+      conclusion: {
+        quote: '“A website shaped by the same care as the dining experience”',
+        body: 'Marsh & Ember became a cohesive digital restaurant experience: atmospheric enough to communicate the brand, structured enough to help visitors act, and maintainable enough to support changing menus, events, hours, and shared restaurant information. Because the project is fictional, its success is not represented with invented traffic or booking figures. Instead, the outcome was measured through implementation quality. Final handoff verification covered 10 public routes across five representative viewport widths with no page-level horizontal overflow or broken images. Six key routes earned Lighthouse scores of 100 for Accessibility, Best Practices, and SEO, with zero cumulative layout shift in the recorded local audits. Automated coverage also exercised route navigation, responsive behavior, keyboard focus, forms, reservation recovery, event availability, internal links, security headers, and WCAG A/AA checks. The result demonstrates how strategy, visual storytelling, structured content, and frontend engineering can work together to create a restaurant website that feels distinctive to guests and practical for the people who manage it.',
+      },
+    },
+  },
   {
     title: 'BASSMENT',
     description:
@@ -162,12 +199,12 @@ export const projects: Project[] = [
       },
       development: {
         body: [
-          "The site is built on Next.js 16 with the App Router — data-fetching pages in server components, interactivity (DJ slider, tabs, contact form) in client components, all under TypeScript strict mode. Every piece of content lives in Sanity CMS: 17 events, 6 resident artists, FAQs, venue details, and a gallery, each modeled with validation rules. Publishing a change triggers a Netlify webhook → revalidation pipeline that purges the CDN and serves fresh pages within seconds — hardened with a content-signature guard and an automated purge token. Each event carries AI-generated poster artwork hosted directly in Sanity, uploaded through the embedded Studio and served on event cards, detail pages, and the home page featured panel. The signature details were built from scratch: a framer-motion DJ slider with preloaded image stacks and directional crossfades (plus full keyboard/ARIA/reduced-motion support), and a greyscale Google Maps API upgrade where a custom red SVG pin is the only color on the map. At the center of it all is the ticket flow. Stripe Payment Element handles the full purchase journey — payment intent, email attachment, webhook, and ticket persistence in Sanity with capacity tracking and auto-sold-out — with branded emails via Resend and a self-serve resend action for ticket recovery. Reliability is verified rather than assumed: a 90-test Vitest suite covers every pure-logic path, an integration script exercises the full purchase loop, and CI runs everything on every PR. Two production bugs made the site better: stale CDN pages fixed with a site-scoped purge token, and a black-band flash in the DJ slider rebuilt as a preloaded crossfade stack.",
+          'The site is built on Next.js 16 with the App Router — data-fetching pages in server components, interactivity (DJ slider, tabs, contact form) in client components, all under TypeScript strict mode. Every piece of content lives in Sanity CMS: 17 events, 6 resident artists, FAQs, venue details, and a gallery, each modeled with validation rules. Publishing a change triggers a Netlify webhook → revalidation pipeline that purges the CDN and serves fresh pages within seconds — hardened with a content-signature guard and an automated purge token. Each event carries AI-generated poster artwork hosted directly in Sanity, uploaded through the embedded Studio and served on event cards, detail pages, and the home page featured panel. The signature details were built from scratch: a framer-motion DJ slider with preloaded image stacks and directional crossfades (plus full keyboard/ARIA/reduced-motion support), and a greyscale Google Maps API upgrade where a custom red SVG pin is the only color on the map. At the center of it all is the ticket flow. Stripe Payment Element handles the full purchase journey — payment intent, email attachment, webhook, and ticket persistence in Sanity with capacity tracking and auto-sold-out — with branded emails via Resend and a self-serve resend action for ticket recovery. Reliability is verified rather than assumed: a 90-test Vitest suite covers every pure-logic path, an integration script exercises the full purchase loop, and CI runs everything on every PR. Two production bugs made the site better: stale CDN pages fixed with a site-scoped purge token, and a black-band flash in the DJ slider rebuilt as a preloaded crossfade stack.',
         ],
       },
       conclusion: {
         quote: '"A Website as Good as the Sound System Itself"',
-        body: "BASSMENT is a portfolio piece that functions as a production website. The live-updates pipeline keeps content fresh without developer intervention. The brutalist design language is unique and brand-appropriate. The animation system is tasteful and performant — scroll-safe, reduced-motion-aware, and entirely GPU-accelerated. The test suite, CI, and integration script ensure every deploy is verified. The site now serves as both a showcase of the fictional venue and a demonstration of what a single developer can build with the modern Jamstack: headless CMS content, serverless functions, edge-cached pages, and a polished, design-driven frontend — all without sacrificing speed or maintainability.",
+        body: 'BASSMENT is a portfolio piece that functions as a production website. The live-updates pipeline keeps content fresh without developer intervention. The brutalist design language is unique and brand-appropriate. The animation system is tasteful and performant — scroll-safe, reduced-motion-aware, and entirely GPU-accelerated. The test suite, CI, and integration script ensure every deploy is verified. The site now serves as both a showcase of the fictional venue and a demonstration of what a single developer can build with the modern Jamstack: headless CMS content, serverless functions, edge-cached pages, and a polished, design-driven frontend — all without sacrificing speed or maintainability.',
       },
     },
   },
