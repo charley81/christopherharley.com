@@ -1,52 +1,51 @@
 ---
-import { Image } from 'astro:assets'
 import type { Project } from '../data/projects'
 export type { Project }
 export interface Props {
   project: Project
+  index: number
 }
 
-const { project } = Astro.props
-const imageWidth = Math.min(project.imageUrl.width, 1920)
-const imageHeight = Math.round(
-  (imageWidth * project.imageUrl.height) / project.imageUrl.width,
-)
+const { project, index } = Astro.props
+const projectNumber = String(index + 1).padStart(2, '0')
 ---
 
-<a
-  href={project.slug}
-  class="block relative group cursor-pointer overflow-hidden bg-surface-subtle border border-border-muted"
->
-  <Image
-    alt={project.imageAlt}
-    class="block w-full h-auto"
-    src={project.imageUrl}
-    width={imageWidth}
-    height={imageHeight}
-  />
-  <div
-    class="absolute inset-0 bg-linear-to-t from-text-primary/90 via-text-primary/30 to-transparent flex flex-col justify-end p-gutter"
+<article class="border-b border-border-muted last:border-b-0">
+  <a
+    href={project.slug}
+    class="group py-10 md:py-14 lg:py-16 grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-text-primary"
   >
-    <h3 class="font-headline-md text-headline-md text-white mb-2">
-      {project.title}
-    </h3>
+    <div class="min-w-0">
+      <p
+        class="font-label-mono text-label-mono text-text-secondary mb-4 md:mb-6"
+        aria-hidden="true"
+      >
+        {projectNumber}
+      </p>
+      <h3
+        class="font-headline-lg text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.92] tracking-[-0.045em] font-semibold text-text-primary text-balance"
+      >
+        {project.title}
+      </h3>
+      <ul class="flex flex-wrap gap-2 mt-7 md:mt-9" aria-label="Technologies">
+        {
+          project.tags.map((tag) => (
+            <li class="px-3 py-1.5 border border-border-muted rounded-full text-text-secondary text-[10px] leading-4 uppercase tracking-[0.08em] font-label-mono">
+              {tag}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
     <span
-      class="text-white font-label-mono text-label-mono mb-4 flex items-center gap-2"
+      class="w-fit inline-flex items-center gap-2 pb-1 border-b border-text-primary font-label-mono text-label-mono uppercase text-text-primary transition-[gap,color,border-color] duration-300 group-hover:gap-4 group-hover:text-text-secondary group-hover:border-text-secondary"
     >
-      <span class="group-hover:underline">Read Case Study</span>
+      <span>Read case study</span>
       <span
-        class="material-symbols-outlined text-body-md group-hover:translate-x-1 transition-transform"
-        >arrow_forward</span
+        class="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1"
+        aria-hidden="true">arrow_forward</span
       >
     </span>
-    <div class="flex gap-2">
-      {
-        project.tags.map((tag) => (
-          <span class="px-3 py-1 border border-white/30 rounded-full text-white text-[10px] uppercase font-label-mono">
-            {tag}
-          </span>
-        ))
-      }
-    </div>
-  </div>
-</a>
+  </a>
+</article>

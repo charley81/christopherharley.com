@@ -10,9 +10,11 @@ export const contactSchema = z.object({
   email: z.string().refine((v) => emailRegex.test(v), {
     message: 'Please enter a valid email',
   }),
-  inquiry: z.enum(['agency', 'freelance', 'hi'], {
-    error: 'Please select a subject',
-  }),
+  subject: z
+    .string()
+    .trim()
+    .min(1, { message: 'Subject is required' })
+    .max(200, { message: 'Subject is too long' }),
   message: z
     .string()
     .min(10, { message: 'Message must be at least 10 characters' })

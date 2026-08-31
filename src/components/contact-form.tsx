@@ -22,16 +22,10 @@ type FormState = {
 }
 
 const initialState: FormState = {
-  values: { name: '', email: '', inquiry: 'freelance', message: '' },
+  values: { name: '', email: '', subject: '', message: '' },
   errors: null,
   success: false,
   serverError: null,
-}
-
-const inquiryLabels: Record<string, string> = {
-  agency: 'Agency Role',
-  freelance: 'Freelance Project',
-  hi: 'Just saying hi',
 }
 
 async function netlifyAction(
@@ -41,7 +35,7 @@ async function netlifyAction(
   const values = {
     name: (formData.get('name') as string) || '',
     email: (formData.get('email') as string) || '',
-    inquiry: (formData.get('inquiry') as string) || 'freelance',
+    subject: (formData.get('subject') as string) || '',
     message: (formData.get('message') as string) || '',
   } as ContactFormValues
 
@@ -65,7 +59,7 @@ async function netlifyAction(
     body.append('form-name', 'contact')
     body.append('name', result.data.name)
     body.append('email', result.data.email)
-    body.append('inquiry', inquiryLabels[result.data.inquiry])
+    body.append('subject', result.data.subject)
     body.append('message', result.data.message)
 
     const response = await fetch('/', {
@@ -80,7 +74,7 @@ async function netlifyAction(
     }
 
     return {
-      values: { name: '', email: '', inquiry: 'freelance', message: '' },
+      values: { name: '', email: '', subject: '', message: '' },
       errors: null,
       success: true,
       serverError: null,
@@ -179,35 +173,18 @@ export function ContactForm() {
           </Field>
         </div>
 
-        <Field data-invalid={!!state.errors?.inquiry?.length}>
-          <FieldLabel htmlFor="inquiry">Subject</FieldLabel>
-          <div className="relative">
-            <select
-              id="inquiry"
-              name="inquiry"
-              defaultValue={state.values.inquiry}
-              disabled={pending}
-              aria-invalid={!!state.errors?.inquiry?.length}
-              className="w-full bg-transparent border-0 border-b border-border-muted focus:border-primary focus:ring-0 focus:outline-none px-0 py-3 font-body-md text-body-md text-text-primary transition-colors duration-300 appearance-none cursor-pointer rounded-none"
-            >
-              <option className="bg-background" value="agency">
-                Agency Role
-              </option>
-              <option className="bg-background" value="freelance">
-                Freelance Project
-              </option>
-              <option className="bg-background" value="hi">
-                Just saying hi
-              </option>
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-text-secondary">
-              <span className="material-symbols-outlined text-[20px]">
-                expand_more
-              </span>
-            </div>
-          </div>
-          {state.errors?.inquiry && (
-            <FieldError>{state.errors.inquiry[0]}</FieldError>
+        <Field data-invalid={!!state.errors?.subject?.length}>
+          <FieldLabel htmlFor="subject">Subject</FieldLabel>
+          <Input
+            id="subject"
+            name="subject"
+            defaultValue={state.values.subject}
+            disabled={pending}
+            aria-invalid={!!state.errors?.subject?.length}
+            placeholder="Website project"
+          />
+          {state.errors?.subject && (
+            <FieldError>{state.errors.subject[0]}</FieldError>
           )}
         </Field>
 

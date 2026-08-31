@@ -94,7 +94,6 @@ export const projects: Project[] = [
         'Netlify',
         'Vitest',
         'Playwright',
-        'Axe',
       ],
       liveLink: 'https://marshandember.netlify.app',
       introduction: {
