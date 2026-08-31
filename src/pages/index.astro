@@ -11,19 +11,28 @@ import { projects } from '../data/projects'
   <section
     class="max-w-max-width mx-auto px-edge-padding py-section-v-space flex flex-col items-center justify-center text-center min-h-128"
   >
-    <h1 class="font-display-lg text-display-lg text-text-primary mb-unit">
-      Design Engineer
+    <h1
+      class="font-headline-lg text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.92] tracking-[-0.045em] font-bold text-text-primary text-balance mb-8"
+    >
+      Designer | Developer
     </h1>
     <p class="font-body-lg text-body-lg text-text-secondary max-w-2xl">
-      Hi I'm Christopher, I design and build custom webstites. Please reach out
-      via the contact page to inquire about working together.
+      I design and build fast, scalable digital experiences—from custom
+      marketing websites to headless commerce storefronts.
     </p>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Projects Section -->
   <section
-    class="max-w-max-width mx-auto px-edge-padding pb-section-v-space flex flex-col gap-section-v-space mb-section-v-space"
+    aria-label="Projects"
+    class="max-w-max-width mx-auto px-edge-padding pb-section-v-space mb-section-v-space"
   >
-    {projects.map((project) => <ProjectCard project={project} />)}
+    <div>
+      {
+        projects.map((project, index) => (
+          <ProjectCard project={project} index={index} />
+        ))
+      }
+    </div>
   </section>
 </Layout>
